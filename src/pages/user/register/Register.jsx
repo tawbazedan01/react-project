@@ -1,32 +1,80 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useForm } from 'react-hook-form';
 import styles from './register.module.css';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Slide, toast } from "react-toastify";
 
 export default function Register() {
-  const {register} = useForm();
+  const [isLoading, setIsLoading] = useState(false);
+  const [serverError, setServerError] = useState(null);
+  const navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const registerUser = async (value) => {
+    setIsLoading(true);
+    try {
+      const response = await axios.post(`https://ecommerce-node4.onrender.com/auth/signup`, value);
+      if (response.status == 201) {
+        toast.success('please check your email', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Slide,
+        });
+        navigate('/login');
+      }
+      console.log(response)
+    } catch (error) {
+      if (error.response.status == 409) {
+        setServerError("email already in use");
+      } else {
+        setServerError("server error");
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  }
   return (
     <>
       <div className={styles.registerContainer}>
-      <Form className={styles.registerForm}>
-        <FloatingLabel controlId="floatingInput" label="UserName" className="mb-3">
-          <Form.Control type="text" placeholder="" />
-        </FloatingLabel>
+        <Form onSubmit={handleSubmit(registerUser)} className={styles.registerForm}>
+          {serverError ? <div className='text-danger'>{serverError}</div>:null}
+          <h2 className='pb-3'> Register </h2>
+          <FloatingLabel controlId="floatingInput" label="UserName" className="mb-3">
+            <Form.Control type="text" placeholder=""
+              {...register("userName", { required: "username is required" })} />
+            {errors.userName ? <div className='text-danger'>{errors.userName.message}</div> : null}
 
-        <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
-          <Form.Control type="email" placeholder="" />
-        </FloatingLabel>
+          </FloatingLabel>
 
-        <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
-          <Form.Control type="password" placeholder="" />
-        </FloatingLabel>
+          <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+            <Form.Control type="email" placeholder=""
+              {...register("email", { required: "email is required" })} />
+            {errors.email ? <div className='text-danger'>{errors.email.message}</div> : null}
+          </FloatingLabel>
 
-        <Button variant="primary" className="w-100">Register</Button>
-      </Form>
-    </div>
+          <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
+            <Form.Control type="password" placeholder=""
+              {...register("password", { required: "password is required" })} />
+            {errors.password ? <div className='text-danger'>{errors.password.message}</div> : null}
+
+          </FloatingLabel>
+
+          <Button type="submit" variant="primary" className="w-100"
+            disabled={isLoading}>
+            {isLoading ? "Loading..." : "Register"}
+          </Button>
+        </Form>
+      </div>
     </>
-  
+
   );
 }
