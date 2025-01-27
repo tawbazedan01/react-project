@@ -7,6 +7,10 @@ import logo from '../../../assets/images/logo-img/logo.png';
 import style from './navbar.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 export default function CustomNavbar() {
@@ -25,9 +29,13 @@ export default function CustomNavbar() {
             <Nav.Link as={Link} to={''}>Contact</Nav.Link>
           </Nav>
           <Nav>
+            <NavDropdown title={<FontAwesomeIcon icon={faUser} />} >
+              <NavDropdown.Item as={Link} to={'/login'}>Login</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={'/register'} >Register</NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link as={Link} to={'/'}><FontAwesomeIcon icon={faMagnifyingGlass} /></Nav.Link>
+            <Nav.Link as={Link} to={'/'}><FontAwesomeIcon icon={faHeart} /></Nav.Link>
             <Nav.Link as={Link} to={'/cart'}> <FontAwesomeIcon icon={faCartShopping} /></Nav.Link>
-            <Nav.Link as={Link} to={'/login'}>Login</Nav.Link>
-            <Nav.Link as={Link} to={'/register'}>Register</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

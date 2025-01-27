@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+:root{
+
+    --mainColor:#000000;
+    --secColor: #9F9F9F;
+    --bgColor: #FFFFFF;
+    --mainFont:"Poppins", sans-serif;
+}
+a{
+    text-decoration: none !important;
+}
+ul{
+    list-style: none !important;
+}

@@ -1,4 +1,45 @@
-.copy{
-    border-top: 1px solid black;
+.title p {
+    color: var(--secColor);
+}
+
+.links h6 a {
+    color: var(--secColor);
+}
+
+.links ul {
+    padding-left: 0;
+}
+
+.links ul li a {
+    color: var(--mainColor);
+    font-weight: 600;
+
+}
+.input1 label{
+    color: var(--secColor);
+
+}
+.input1 input {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+
+.sub {
+    padding: ;
+    width: 100px;
+    height: 58px;
+    border: none;
+    border-bottom: 2px solid black;
+    color: var(--mainColor);
+    font-weight: 500;
+    background-color: var(--bgColor) ;
+
+}
+
+
+.copy {
+    border-top: 1px solid var(--secColor);
     padding-top: 10px;
 }
