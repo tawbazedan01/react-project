@@ -22,6 +22,7 @@ export default function Products() {
                   <div key={product._id} className={`col-3`}>
                     <div className="d-flex flex-column">
                       <img src={product.mainImage.secure_url} width={150} />
+                      <h6> {product.name}</h6>
                       <Link to={`/products/${product._id}`}> Product Details </Link>
                     </div>
                   </div>
