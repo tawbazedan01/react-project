@@ -1,0 +1,30 @@
+.bgImage {
+    background-image: url('../../../assets/images/bg-img/bg-2.png');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlayText {
+    color: var(--mainColor);
+    font-size: 2rem;
+    text-align: center;
+}
+
+.category1 {
+    background-color: #F4F5F7;
+    width: 230px;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+    transition: transform 0.3s ease, border-radius 0.3s ease;
+}
+
+.category1:hover {
+    transform: scale(1.1);
+}
