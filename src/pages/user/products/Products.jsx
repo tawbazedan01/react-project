@@ -2,6 +2,7 @@ import React from 'react'
 import useFetch from '../../../assets/hooks/useFetch';
 import Loading from '../../../components/loading/Loading.jsx';
 import style from './products.module.css';
+import { Link } from 'react-router-dom';
 
 export default function Products() {
    const { data, isLoading, error } = useFetch(`${import.meta.env.VITE_BURL}/products`);
@@ -19,8 +20,9 @@ export default function Products() {
               <div className="row ">
                 {data.products.map((product) => (
                   <div key={product._id} className={`col-3`}>
-                    <div className="">
+                    <div className="d-flex flex-column">
                       <img src={product.mainImage.secure_url} width={150} />
+                      <Link to={`/products/${product._id}`}> Product Details </Link>
                     </div>
                   </div>
                 ))}
