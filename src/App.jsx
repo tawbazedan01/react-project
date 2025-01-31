@@ -11,6 +11,7 @@ import Categories from './pages/user/categories/Categories.jsx';
 import Products from './pages/user/products/Products.jsx';
 import ProductWithCategory from './pages/user/products/ProductWithCategory.jsx';
 import ProductDetails from './pages/user/products/ProductDetails.jsx';
+import Cart from './pages/user/cart/Cart.jsx';
 
 
 export default function App() {
@@ -43,6 +44,10 @@ export default function App() {
         {
           path: 'products/:productId',
           element: <ProductDetails />
+        },
+        {
+          path: 'cart',
+          element: <Cart/>
         },
       ],
     },

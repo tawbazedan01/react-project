@@ -1,8 +1,12 @@
 import React from 'react';
 import useFetch from '../../../assets/hooks/useFetch';
 import Loading from '../../../components/loading/Loading.jsx';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
+import axios from 'axios';
+import { Slide, toast } from 'react-toastify';
+import Button from 'react-bootstrap/Button';
+
 
 export default function ProductDetails() {
     const { productId } = useParams();
@@ -17,6 +21,41 @@ export default function ProductDetails() {
     }
 
     const product = data?.product;
+
+    const addProductToCart = async () => {
+        try {
+            const token = localStorage.getItem("userToken");
+            const navigate = useNavigate();
+
+            const response = await axios.post(`${import.meta.env.VITE_BURL}/cart`,
+                {
+                    productId: productId
+                },
+                {
+                    headers: {
+                        Authorization: `Tariq__${token}`,
+                    }
+                }
+            );
+            if (response.status == 201) {
+                toast.success('product added to cart', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Slide,
+                });
+                navigate('/cart');
+            }
+        } catch (error) {
+            console.log("error", error);
+        }
+
+    }
 
     return (
         <section className="product container py-5 w-100">
@@ -64,6 +103,7 @@ export default function ProductDetails() {
                         <Card.Text>
                             <strong>Category:</strong> {product.category}
                         </Card.Text>
+                        <Button type="submit" onClick={() => addProductToCart(product._id)}> add product to cart </Button>
                     </Card.Body>
                 </div>
             </div>

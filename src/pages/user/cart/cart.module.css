@@ -1,0 +1,52 @@
+.cart {
+    background-image: url('../../../assets/images/bg-img/bg-2.png');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading {
+    background-color: #F9F1E7;
+}
+
+.contant1,
+.total1 {
+    color: var(--secColor);
+}
+
+.contant2 {
+    color: var(--mainColor);
+}
+
+.contant2 .icon {
+    color: #B88E2F;
+}
+
+.total2 {
+    color: #B88E2F;
+    font-weight: 600;
+}
+
+.cartTotal {
+    background-color: #F9F1E7;
+}
+
+.check a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mainColor);
+    border: 1px solid black;
+    width: 210px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.check a:hover {
+    color: var(--bgColor);
+    background-color: var(--mainColor);
+    border: 1px solid black;
+}

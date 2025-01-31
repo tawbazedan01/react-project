@@ -1,0 +1,16 @@
+.footer2{
+    background-color: var(--sectionColor);
+}
+
+.icons{
+    font-size: 50px;
+    color: #242424;
+}
+
+.footer2 h6{
+    font-weight: 700;
+}
+
+.footer2 span{
+    color: #898989;
+}

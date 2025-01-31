@@ -17,7 +17,7 @@ export default function CustomNavbar() {
           <img src={logo} alt="brand-name" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse className="d-flex justify-content-evenly" id="basic-navbar-nav">
+        <Navbar.Collapse className="justify-content-evenly" id="basic-navbar-nav">
           <Nav className="d-flex gap-3">
             <Nav.Link as={Link} to={'/home'}>Home</Nav.Link>
             <Nav.Link as={Link} to={'/categories'}>Categories</Nav.Link>
@@ -25,23 +25,24 @@ export default function CustomNavbar() {
             <Nav.Link as={Link} to={'#'}>About</Nav.Link>
             <Nav.Link as={Link} to={'#'}>Contact</Nav.Link>
           </Nav>
-          <Nav>
-            <NavDropdown title={<FontAwesomeIcon icon={faUser} />} >
-              <NavDropdown.Item as={Link} to={'/auth/login'}>Login</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={'/auth/register'}>Register</NavDropdown.Item>
 
-            </NavDropdown>
-            <Nav.Link as={Link} to={'#'}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </Nav.Link>
-            <Nav.Link as={Link} to={'#'}>
-              <FontAwesomeIcon icon={faHeart} />
-            </Nav.Link>
-            <Nav.Link as={Link} to={'#'}>
-              <FontAwesomeIcon icon={faCartShopping} />
-            </Nav.Link>
-          </Nav>
         </Navbar.Collapse>
+        <Nav className="d-flex flex-md-row gap-3">
+          <NavDropdown title={<FontAwesomeIcon icon={faUser} />} >
+            <NavDropdown.Item as={Link} to={'/auth/login'}>Login</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to={'/auth/register'}>Register</NavDropdown.Item>
+          </NavDropdown>
+          <Nav.Link as={Link} to={'#'}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </Nav.Link>
+          <Nav.Link as={Link} to={'#'}>
+            <FontAwesomeIcon icon={faHeart} />
+          </Nav.Link>
+          <Nav.Link as={Link} to={'/cart'}>
+            <FontAwesomeIcon icon={faCartShopping} />
+          </Nav.Link>
+        </Nav>
+
       </Container>
     </Navbar>
   );

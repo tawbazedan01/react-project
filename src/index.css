@@ -3,9 +3,9 @@
     padding: 0;
 }
 :root{
-
     --mainColor:#000000;
     --secColor: #9F9F9F;
+    --sectionColor:#FAF3EA;
     --bgColor: #FFFFFF;
     --mainFont:"Poppins", sans-serif;
 }

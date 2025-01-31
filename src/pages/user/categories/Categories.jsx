@@ -3,6 +3,8 @@ import useFetch from '../../../assets/hooks/useFetch';
 import Loading from '../../../components/loading/Loading.jsx';
 import style from './categories.module.css';
 import { Link } from 'react-router-dom';
+import logo2 from '../../../assets/images/logo-img/House_Logos.png';
+
 
 
 export default function Categories() {
@@ -15,7 +17,8 @@ export default function Categories() {
   return (
     <>
       {error ? <div className='alert alert-danger'>{error}</div> : ''}
-      <div className={`${style.bgImage}`}>
+      <div className={`d-flex flex-column${style.bgImage}`}>
+        <img src={logo2} alt="logo" />
         <h2 className={style.overlayText}>Categories</h2>
       </div>
       <div className="categories container py-5">
@@ -23,9 +26,9 @@ export default function Categories() {
           {data.categories.map((category) => (
             <div key={category._id} className={`col-3`}>
               <Link to={`/categories/${category._id}`}>
-              <div className={`${style.category1}`}>
-                <img src={category.image.secure_url} width={150} />
-              </div>
+                <div className={`${style.category1}`}>
+                  <img src={category.image.secure_url} width={150} />
+                </div>
               </Link>
             </div>
           ))}
