@@ -20,7 +20,7 @@ export default function Login() {
       const response = await axios.post(`https://ecommerce-node4.onrender.com/auth/signin`, value);
       if (response.status == 200) {
         localStorage.setItem("userToken",response.data.token);
-        navigate('/')
+        navigate('/home')
       }
       console.log(response)
     } catch (error) {

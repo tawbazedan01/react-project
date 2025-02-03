@@ -4,6 +4,9 @@ import Loading from '../../../components/loading/Loading.jsx';
 import style from './products.module.css';
 import { Link } from 'react-router-dom';
 import logo2 from '../../../assets/images/logo-img/House_Logos.png';
+import SectionFooter from '../../../components/user/footerSection/SectionFooter';
+import Product from '../../../components/product/Product.jsx';
+
 
 
 export default function Products() {
@@ -20,18 +23,14 @@ export default function Products() {
         <h2 className={style.overlayText1}>Products</h2>
       </div>
       <div className="products container py-5">
-        <div className="row ">
+        <div className="row">
           {data.products.map((product) => (
-            <div key={product._id} className={`col-3`}>
-              <div className="d-flex flex-column">
-                <img src={product.mainImage.secure_url} width={150} />
-                <h6> {product.name}</h6>
-                <Link to={`/products/${product._id}`}> Product Details </Link>
-              </div>
-            </div>
+            <Product key={product._id} product={product} />
           ))}
         </div>
       </div>
+      <SectionFooter />
     </div>
+
   )
 }

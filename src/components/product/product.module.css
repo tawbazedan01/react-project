@@ -1,0 +1,64 @@
+.product {
+    margin-top: 8px;
+    background-color: #F4F5F7;
+    border: 4px solid #F4F5F7;
+    height: 350px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 8px;
+    overflow: hidden;  
+}
+
+.pic {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden; 
+}
+
+.pic img {
+    max-height: 100%;
+    object-fit: contain;
+}
+
+h6 {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap; /* منع النص من الانتقال للسطر الثاني */
+    overflow: hidden;    /* إخفاء النص الزائد */
+    text-overflow: ellipsis; /* إظهار (...) إذا كان النص طويل */
+    margin: 5px 0;
+}
+
+.price :first-child {
+    color: var(--mainColor);
+    font-weight: 600;
+}
+
+.price :last-child {
+    color: var(--secColor);
+    text-decoration: line-through;
+}
+
+.link {
+    width: 150px;
+    border: 2px solid var(--mainColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border-radius: 5px;
+    margin: auto;
+    padding: 5px; /* تحسين حجم الزر */
+}
+
+.link:hover {
+    background-color: var(--mainColor);
+    color: var(--bgColor);
+}

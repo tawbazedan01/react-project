@@ -1,0 +1,21 @@
+.header{
+    background-color: #F9F1E7;
+    height: 70px;
+ }
+
+ .title{
+    padding-left: 50px;
+ }
+
+ 
+
+ .title1 span{
+    color: var(--secColor);
+ }
+
+ .separator {
+    width: 1px; 
+    height: 35px; 
+    background-color: #000; 
+    margin: 0 5px; 
+}

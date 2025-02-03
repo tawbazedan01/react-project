@@ -17,7 +17,7 @@ export default function Categories() {
   return (
     <>
       {error ? <div className='alert alert-danger'>{error}</div> : ''}
-      <div className={`d-flex flex-column${style.bgImage}`}>
+      <div className={`${style.bgImage} d-flex flex-column`}>
         <img src={logo2} alt="logo" />
         <h2 className={style.overlayText}>Categories</h2>
       </div>
