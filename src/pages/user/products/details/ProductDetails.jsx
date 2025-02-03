@@ -12,6 +12,7 @@ import style from './details.module.css';
 
 export default function ProductDetails() {
     const { productId } = useParams();
+    const navigate = useNavigate();
     const { data, isLoading, error } = useFetch(`${import.meta.env.VITE_BURL}/products/${productId}`);
 
     if (isLoading) {
@@ -27,8 +28,6 @@ export default function ProductDetails() {
     const addProductToCart = async () => {
         try {
             const token = localStorage.getItem("userToken");
-            const navigate = useNavigate();
-
             const response = await axios.post(`${import.meta.env.VITE_BURL}/cart`,
                 {
                     productId: productId
@@ -39,7 +38,7 @@ export default function ProductDetails() {
                     }
                 }
             );
-            if (response.status == 201) {
+            if (response.status === 201) {
                 toast.success('product added to cart', {
                     position: "top-right",
                     autoClose: 5000,
@@ -54,7 +53,7 @@ export default function ProductDetails() {
                 navigate('/cart');
             }
         } catch (error) {
-            console.log("error", error);
+            console.log("error", error.message);
         }
 
     }

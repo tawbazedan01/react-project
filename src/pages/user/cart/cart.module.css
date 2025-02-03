@@ -12,6 +12,14 @@
     background-color: #F9F1E7;
 }
 
+.pic {
+    max-width: 200px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+
 .contant1,
 .total1 {
     color: var(--secColor);
