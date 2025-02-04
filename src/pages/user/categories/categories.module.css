@@ -28,3 +28,9 @@
 .category1:hover {
     transform: scale(1.1);
 }
+
+.category12{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -23,15 +23,21 @@ export default function Categories() {
       </div>
       <div className="categories container py-5">
         <div className="row ">
+
+
           {data.categories.map((category) => (
-            <div key={category._id} className={`col-3`}>
+
+            <div key={category._id} className={`col-12 col-md-6 col-lg-3 mb-3 mb-md-4 ${style.category12} `}>
               <Link to={`/categories/${category._id}`}>
                 <div className={`${style.category1}`}>
                   <img src={category.image.secure_url} width={150} />
                 </div>
               </Link>
             </div>
+
           ))}
+
+
         </div>
       </div>
     </>

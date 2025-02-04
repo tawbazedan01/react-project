@@ -52,50 +52,59 @@ export default function Cart() {
       <section className={`p-5 m-1 ${style.cart2}`}>
         <div className="container">
           <div className="row">
-            <div className="col-8">
-              <div className={`d-flex flex-column gap-5 pt-2 pb-2 ps-5 pe-5 ${style.contant}`}>
-                <div className={`d-flex justify-content-center align-items-center justify-content-between ps-5 pe-5 pt-2 pb-2 ${style.heading}`}>
-                  <h6>Product</h6>
-                  <h6>Price</h6>
-                  <h6>Quantity</h6>
-                  <h6>Subtotal</h6>
+            <div className="col-12 col-md-8">
+              <div className={`d-flex flex-column ${style.contant}`}>
+                <div className="table-responsive">
+                  <table className="table">
+                    <thead className={style.heading}>
+                      <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th >Quantity</th>
+                        <th>Subtotal</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      {data.map(item => (
+                        <tr key={item._id}>
+                          <td>
+                            <div className={`d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center ${style.contant1}`}>
+                              <div className={style.pic}>
+                                <img src={item.details.mainImage.secure_url} alt="product" width="55px" style={{ maxWidth: '100%' }} />
+                              </div>
+                              <span className={`${style.productName}`}>{item.details.name}</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div className={`pt-5 ${style.contant1}`}>
+                              <span>{item.details.finalPrice}$</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="ps-1">
+                              <div className={`ps-5 pt-5 ${style.contant2}`}>
+                                <span>{item.quantity}</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="">
+                              <div className={`pt-5 ps-5 d-flex gap-4 justify-content-center align-items-center ${style.contant2}`}>
+                                <span>{item.quantity * item.details.finalPrice}$</span>
+                                <FontAwesomeIcon className={`${style.icon}`} icon={faTrash} />
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
-
-                {data.map(item => (
-                  <div key={item._id}>
-                    <div className='d-flex gap-5'>
-                      <div>
-                        <div className={`pt-4 d-flex gap-3 justify-content-center align-items-center ${style.contant1}`}>
-                          <div className={style.pic}>
-                            <img src={item.details.mainImage.secure_url} alt='product' width='70px' />
-                          </div>
-                          <span>{item.details.name}</span>
-                        </div>
-                      </div>
-                      <div>
-                        <div className={`pt-5 ${style.contant1}`}>
-                          <span>{item.details.finalPrice}</span>
-                        </div>
-                      </div>
-                      <div>
-                        <div className={`pt-5 ${style.contant2}`}>
-                          <span>{item.quantity}</span>
-                        </div>
-                      </div>
-                      <div>
-                        <div className={`pt-5 ps-5 d-flex gap-4 justify-content-center align-items-center ${style.contant2}`}>
-                          <span>{item.quantity * item.details.finalPrice}</span>
-                          <FontAwesomeIcon className={`${style.icon}`} icon={faTrash} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
               </div>
             </div>
 
-            <div className="col-4">
+            <div className="col-12 col-md-4">
               <div className={`ps-5 pb-5 ${style.cartTotal}`}>
                 <h3 className='pt-5'>Cart Totals</h3>
                 <div className='pt-3 d-flex flex-column gap-4'>

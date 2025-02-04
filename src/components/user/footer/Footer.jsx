@@ -9,16 +9,15 @@ export default function Footer() {
     <>
       <section className='p-5'>
         <div className='container'>
-          <div className="row d-flex justify-content-evenly">
-            <div className={`${style.title} col-3`}>
+          <div className="row d-flex flex-column flex-lg-row justify-content-evenly ">
+            <div className={`   col-md-3 col-12   ${style.title}  `}>
               <h3>Funiro.</h3>
               <p className='pt-5'>
-                400 University Drive Suite 200 Coral Gables,
-                FL 33134 USA
+                400 University Drive Suite 200 Coral Gables, FL 33134 USA
               </p>
             </div>
-            <div className={`${style.links} col-9`}>
-              <div className='d-flex justify-content-evenly pt-3 pb-3'>
+            <div className={`  col-md-9 col-12 ${style.links}  `}>
+              <div className='d-flex justify-content-evenly pt-3 pb-3 flex-column flex-md-row  gap-3 gap-md-4'>
                 <div>
                   <h6><Link to='#'>Links</Link></h6>
                   <ul className='pt-3 d-flex flex-column gap-4'>
@@ -30,14 +29,13 @@ export default function Footer() {
                 </div>
                 <div>
                   <h6><Link to='#'>Help</Link></h6>
-                  <ul className='pt-3 d-flex flex-column gap-4' >
+                  <ul className='pt-3 d-flex flex-column gap-4'>
                     <li><Link to="#">Payment Options</Link></li>
                     <li><Link to="#">Returns</Link></li>
                     <li><Link to="#">Privacy Policies</Link></li>
-
                   </ul>
                 </div>
-                <div className="">
+                <div>
                   <h6><Link to='#'>Newsletter</Link></h6>
                   <Form className='pt-3 d-flex gap-2'>
                     <FloatingLabel
@@ -47,17 +45,14 @@ export default function Footer() {
                     >
                       <Form.Control type="email" placeholder="" required />
                     </FloatingLabel>
-
                     <button type="submit" className={`${style.sub}`}>SUBSCRIBE</button>
-
                   </Form>
-
                 </div>
               </div>
             </div>
           </div>
           <div className={`${style.copy} pt-4`}>
-            <p>2025 furino. All rights reverved</p>
+            <p>2025 furino. All rights reserved</p>
           </div>
         </div>
       </section>

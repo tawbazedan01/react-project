@@ -4,7 +4,7 @@ import style from './product.module.css';
 
 const Product = ({ product }) => {
   return (
-    <div className="col-3">
+    <div className="col-12 col-md-6 col-lg-3">
       <div className={`${style.product} d-flex flex-column gap-3`}>
         <div className={`${style.pic} d-flex justify-content-center align-items-center`}>
           <img className='' src={product.mainImage.secure_url} width='150px' alt={product.name} />

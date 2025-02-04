@@ -15,10 +15,12 @@
     font-weight: 600;
 
 }
-.input1 label{
+
+.input1 label {
     color: var(--secColor);
 
 }
+
 .input1 input {
     border: none;
     border-radius: 0;
@@ -34,7 +36,7 @@
     border-bottom: 2px solid black;
     color: var(--mainColor);
     font-weight: 500;
-    background-color: var(--bgColor) ;
+    background-color: var(--bgColor);
 
 }
 

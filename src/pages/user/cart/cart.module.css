@@ -8,17 +8,16 @@
     justify-content: center;
 }
 
-.heading {
+.heading tr th {
     background-color: #F9F1E7;
 }
 
-.pic {
-    max-width: 200px; 
+.productName {
+    max-width: 110px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  
+}
 
 .contant1,
 .total1 {
@@ -57,4 +56,43 @@
     color: var(--bgColor);
     background-color: var(--mainColor);
     border: 1px solid black;
+}
+
+
+/* أساسيات التصميم */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* التعديل للمحتوى في الشاشات الصغيرة */
+@media (max-width: 767px) {
+
+    .table,
+    .table th,
+    .table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table th {
+        background-color: #f9f1e7;
+        color: #333;
+        padding: 8px;
+    }
+
+    .table td {
+        padding: 8px;
+        border-top: 1px solid #ddd;
+    }
+
+    .table td div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .table td .productName,
+    .table td .contant1 {
+        width: 100%;
+    }
 }
