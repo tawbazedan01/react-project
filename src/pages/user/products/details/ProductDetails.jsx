@@ -14,7 +14,7 @@ export default function ProductDetails() {
     const { productId } = useParams();
     const navigate = useNavigate();
     const { cartCount, setCartCount } = useContext(CartContext);
-    
+
     const { data, isLoading, error } = useFetch(`${import.meta.env.VITE_BURL}/products/${productId}`);
 
     if (isLoading) {

@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Loading from '../../../components/loading/Loading';
 import SectionFooter from '../../../components/user/footerSection/SectionFooter';
-import style from './cart.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import logo2 from '../../../assets/images/logo-img/House_Logos.png';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import style from './cart.module.css';
+import Table from 'react-bootstrap/Table';
+import { CartContext } from '../../../components/user/context/CartContext';
 
 export default function Cart() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { cartCount, setCartCount } = useContext(CartContext); // تم إضافة useContext هنا
 
   const token = localStorage.getItem("userToken");
 
@@ -42,9 +45,43 @@ export default function Cart() {
     return <div>Error: {error.message}</div>;
   }
 
+  const incQty = async (productId) => {
+    const token = localStorage.getItem('userToken');
+    const response = await axios.patch(`${import.meta.env.VITE_BURL}/cart/incraseQuantity`,
+      {
+        productId: productId
+      },
+      {
+        headers: {
+          Authorization: `Tariq__${token}`,
+        }
+      }
+    );
+    setCartCount(cartCount + 1);
+    getCart();
+    console.log(response);
+  }
+
+  const decQty = async (productId) => {
+    const token = localStorage.getItem('userToken');
+    const response = await axios.patch(`${import.meta.env.VITE_BURL}/cart/decraseQuantity`,
+      {
+        productId: productId
+      },
+      {
+        headers: {
+          Authorization: `Tariq__${token}`,
+        }
+      }
+    );
+    getCart();
+    setCartCount(cartCount - 1);
+    console.log(response);
+  }
+
   return (
     <>
-      <div className={`d-flex flex-column ${style.cart}`}>
+      <div className={`d-flex flex-column align-items-center ${style.cart}`}>
         <img src={logo2} alt="logo" />
         <h2>Cart</h2>
       </div>
@@ -55,51 +92,52 @@ export default function Cart() {
             <div className="col-12 col-md-8">
               <div className={`d-flex flex-column ${style.contant}`}>
                 <div className="table-responsive">
-                  <table className="table">
+                  <Table striped bordered hover responsive>
                     <thead className={style.heading}>
                       <tr>
                         <th>Product</th>
                         <th>Price</th>
-                        <th >Quantity</th>
+                        <th>Quantity</th>
                         <th>Subtotal</th>
                       </tr>
                     </thead>
-
                     <tbody>
                       {data.map(item => (
                         <tr key={item._id}>
                           <td>
                             <div className={`d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center ${style.contant1}`}>
-                              <div className={style.pic}>
+                              <div className={` pt-4 ${style.pic}`}>
                                 <img src={item.details.mainImage.secure_url} alt="product" width="55px" style={{ maxWidth: '100%' }} />
                               </div>
-                              <span className={`${style.productName}`}>{item.details.name}</span>
+                              <span className={style.productName}>{item.details.name}</span>
                             </div>
                           </td>
                           <td>
-                            <div className={`pt-5 ${style.contant1}`}>
+                            <div className={`pt-5 pb-5 d-flex justify-content-center align-items-center ${style.contant1}`}>
                               <span>{item.details.finalPrice}$</span>
                             </div>
                           </td>
                           <td>
                             <div className="ps-1">
-                              <div className={`ps-5 pt-5 ${style.contant2}`}>
+                              <div className={` d-flex  gap-2 ps-5 pt-5 pb-5 ${style.contant2}`}>
+                                <button className={`${style.qty}`} onClick={() => { incQty(item.productId) }}>+</button>
                                 <span>{item.quantity}</span>
+                                <button className={`${style.qty}`} onClick={() => { decQty(item.productId) }}>-</button>
                               </div>
                             </div>
                           </td>
                           <td>
                             <div className="">
-                              <div className={`pt-5 ps-5 d-flex gap-4 justify-content-center align-items-center ${style.contant2}`}>
+                              <div className={`pt-5  d-flex gap-4 justify-content-center align-items-center ${style.contant2}`}>
                                 <span>{item.quantity * item.details.finalPrice}$</span>
-                                <FontAwesomeIcon className={`${style.icon}`} icon={faTrash} />
+                                <FontAwesomeIcon className={style.icon} icon={faTrash} />
                               </div>
                             </div>
                           </td>
                         </tr>
                       ))}
                     </tbody>
-                  </table>
+                  </Table>
                 </div>
               </div>
             </div>
@@ -108,13 +146,13 @@ export default function Cart() {
               <div className={`ps-5 pb-5 ${style.cartTotal}`}>
                 <h3 className='pt-5'>Cart Totals</h3>
                 <div className='pt-3 d-flex flex-column gap-4'>
-                  <div className={`d-flex gap-5`}>
+                  <div className="d-flex gap-5">
                     <h6>Subtotal</h6>
-                    <span className={`${style.total1}`}>Rs. 250,000.00</span>
+                    <span className={style.total1}>Rs. 250,000.00</span>
                   </div>
-                  <div className={`d-flex gap-5`}>
+                  <div className="d-flex gap-5">
                     <h6>Total</h6>
-                    <span className={`${style.total2}`}>Rs. 250,000.00</span>
+                    <span className={style.total2}>Rs. 250,000.00</span>
                   </div>
                   <div className={`ps-4 ${style.check}`}>
                     <Link to="/checkout">Checkout</Link>
@@ -125,7 +163,6 @@ export default function Cart() {
           </div>
         </div>
       </section>
-
       <SectionFooter />
     </>
   );

@@ -11,7 +11,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { CartContext } from '../context/CartContext.jsx';
 
 export default function CustomNavbar() {
-  const {cartCount} = useContext(CartContext);
+  const { cartCount } = useContext(CartContext);
 
   return (
     <Navbar expand="lg" className={style.bgcolor}>
@@ -29,23 +29,25 @@ export default function CustomNavbar() {
             <Nav.Link as={Link} to={'#'}>Contact</Nav.Link>
           </Nav>
 
+          <Nav className="d-flex flex-row gap-3">
+            <NavDropdown title={<FontAwesomeIcon icon={faUser} />} >
+              <NavDropdown.Item as={Link} to={'/auth/login'}>Login</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={'/auth/register'}>Register</NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link as={Link} to={'#'}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </Nav.Link>
+            <Nav.Link as={Link} to={'#'}>
+              <FontAwesomeIcon icon={faHeart} />
+            </Nav.Link>
+            <Nav.Link as={Link} to={'/cart'}>
+              <FontAwesomeIcon icon={faCartShopping} />
+              {cartCount}
+            </Nav.Link>
+          </Nav>
+
         </Navbar.Collapse>
-        <Nav className="d-flex flex-md-row gap-3">
-          <NavDropdown title={<FontAwesomeIcon icon={faUser} />} >
-            <NavDropdown.Item as={Link} to={'/auth/login'}>Login</NavDropdown.Item>
-            <NavDropdown.Item as={Link} to={'/auth/register'}>Register</NavDropdown.Item>
-          </NavDropdown>
-          <Nav.Link as={Link} to={'#'}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </Nav.Link>
-          <Nav.Link as={Link} to={'#'}>
-            <FontAwesomeIcon icon={faHeart} />
-          </Nav.Link>
-          <Nav.Link as={Link} to={'/cart'}>
-            <FontAwesomeIcon icon={faCartShopping} />
-            {cartCount}
-          </Nav.Link>
-        </Nav>
+
 
       </Container>
     </Navbar>

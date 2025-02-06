@@ -37,7 +37,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <h6><Link to='#'>Newsletter</Link></h6>
-                  <Form className='pt-3 d-flex gap-2'>
+                  <Form className='pt-3 d-flex flex-column flex-md-row gap-2'>
                     <FloatingLabel
                       controlId="floatingInput"
                       label="Enter Your Email Address"
