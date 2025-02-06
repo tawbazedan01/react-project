@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,8 +8,11 @@ import style from './navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser, faMagnifyingGlass, faHeart } from '@fortawesome/free-solid-svg-icons';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { CartContext } from '../context/CartContext.jsx';
 
 export default function CustomNavbar() {
+  const {cartCount} = useContext(CartContext);
+
   return (
     <Navbar expand="lg" className={style.bgcolor}>
       <Container>
@@ -40,6 +43,7 @@ export default function CustomNavbar() {
           </Nav.Link>
           <Nav.Link as={Link} to={'/cart'}>
             <FontAwesomeIcon icon={faCartShopping} />
+            {cartCount}
           </Nav.Link>
         </Nav>
 
