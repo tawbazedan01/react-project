@@ -7,7 +7,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Slide, toast } from "react-toastify";
 import styles from './login.module.css';
-
+import CustomButton from '../../../assets/hooks/customButton/customButton';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +20,7 @@ export default function Login() {
     try {
       const response = await axios.post(`https://ecommerce-node4.onrender.com/auth/signin`, value);
       if (response.status == 200) {
-        localStorage.setItem("userToken",response.data.token);
+        localStorage.setItem("userToken", response.data.token);
         navigate('/home')
       }
       console.log(response)
@@ -48,11 +49,12 @@ export default function Login() {
             {errors.password ? <div className='text-danger'>{errors.password.message}</div> : null}
 
           </FloatingLabel>
+          <div className='d-flex flex-column gap-3 pb-3'>
+            <Link to="/auth/resetPassword"  style={{ color: '#B88E2F' }}>
+              forget your password! </Link>
+          </div>
+          <CustomButton disabled={isLoading} type="login" text={isLoading ? "Loading..." : "LogIn"} />
 
-          <Button type="submit" variant="primary" className="w-100"
-            disabled={isLoading}>
-            {isLoading ? "Loading..." : "LogIn"}
-          </Button>
         </Form>
       </div>
     </div>

@@ -13,7 +13,8 @@ import ProductWithCategory from './pages/user/products/ProductWithCategory.jsx';
 import ProductDetails from './pages/user/products/details/ProductDetails.jsx';
 import Cart from './pages/user/cart/Cart.jsx';
 import ProtectedRoute from './components/user/ProtectedRoute.jsx';
-import CartContextProvider from './components/user/context/CartContext.jsx'; 
+import CartContextProvider from './components/user/context/CartContext.jsx';
+import ResetPassword from './pages/user/login/resetPass/ResetPassword.jsx';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,7 @@ export default function App() {
       children: [
         { path: 'register', element: <Register /> },
         { path: 'login', element: <Login /> },
+        { path: 'resetPassword', element: <ResetPassword /> },
       ],
     },
     {

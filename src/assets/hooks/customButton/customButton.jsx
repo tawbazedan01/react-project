@@ -1,7 +1,11 @@
 import React from 'react'
+import style from './customButton.module.css'
 
-export default function customButton() {
+
+export default function CustomButton({ type, text, onClick}) {
   return (
-    <div>customButton</div>
+    <button className={`${style.customBtn} ${style[type]} `} onClick={onClick}>
+      {text}
+    </button>
   )
 }

@@ -7,6 +7,8 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Slide, toast } from "react-toastify";
+import CustomButton from '../../../assets/hooks/customButton/customButton';
+
 
 export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
@@ -68,10 +70,9 @@ export default function Register() {
 
           </FloatingLabel>
 
-          <Button type="submit" variant="primary" className="w-100"
-            disabled={isLoading}>
-            {isLoading ? "Loading..." : "Register"}
-          </Button>
+          <CustomButton disabled={isLoading} type="register" text={isLoading ? "Loading..." : "Register"}/>
+
+         
         </Form>
       </div>
     </>
