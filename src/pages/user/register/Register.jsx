@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Slide, toast } from "react-toastify";
-import CustomButton from '../../../assets/hooks/customButton/CustomButton.jsx';
+import CustomButton from 'src/assets/hooks/customButton/CustomButton.jsx';
 
 
 export default function Register() {
