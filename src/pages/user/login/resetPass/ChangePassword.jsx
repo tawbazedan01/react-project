@@ -7,10 +7,8 @@ import logo2 from '../../../../assets/images/logo-img/House_Logos.png';
 import style from './resetPassword.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';  // إضافة ToastContainer
+import { toast, ToastContainer } from 'react-toastify';  
 
-// تأكد من أنك قمت بإضافة مكتبة react-toastify في مشروعك
-// npm install react-toastify
 
 export default function ChangePassword() {
     const [email, setEmail] = useState("");
