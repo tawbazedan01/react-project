@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import CustomButton from '../../../assets/hooks/customButton/CustomButton.jsx';
+import CustomButton from '../../../../assets/hooks/customButton/CustomButton.jsx';
 import logo2 from '../../../../assets/images/logo-img/House_Logos.png';
 import style from './resetPassword.module.css';
 import axios from 'axios';
