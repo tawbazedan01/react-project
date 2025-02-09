@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Slide, toast } from "react-toastify";
 import styles from './login.module.css';
 import { Link } from 'react-router-dom';
 import CustomButton from '../../../assets/hooks/customButton/CustomButton.jsx';
