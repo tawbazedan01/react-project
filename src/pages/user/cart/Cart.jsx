@@ -9,7 +9,7 @@ import axios from 'axios';
 import style from './cart.module.css';
 import Table from 'react-bootstrap/Table';
 import { CartContext } from '../../../components/user/context/CartContext';
-import CustomButton from '../../../assets/hooks/customButton/customButton';
+import CustomButton from '../../../assets/hooks/customButton/CustomButton.jsx';
 
 
 export default function Cart() {
