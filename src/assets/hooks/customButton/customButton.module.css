@@ -27,6 +27,12 @@
     color: var(--mainColor); /* النص بلون الـ mainColor */
 }
 
+.customBtn.reset {
+    background-color: #D72638; /* لون مميز للزر */
+    border-color: #D72638; /* نفس لون الحدود */
+    color: var(--bgColor); /* النص بلون الخلفية */
+}
+
 
 /* تغيير اللون عند الهوفر */
 .customBtn:hover {
@@ -40,6 +46,13 @@
     background-color: var(--secColor); /* تغيير الخلفية عند المرور */
     border-color: var(--secColor); /* تغيير الحدود عند المرور */
     color: var(--mainColor); /* تغيير النص عند المرور */
+}
+
+/* تأثير الـ hover */
+.customBtn.reset:hover {
+    background-color: #B71C30; /* لون أغمق عند المرور */
+    border-color: #B71C30;
+    color: var(--bgColor);
 }
 
 

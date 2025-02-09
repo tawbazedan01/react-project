@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Slide, toast } from "react-toastify";
 import styles from './login.module.css';
-import CustomButton from '../../../assets/hooks/customButton/customButton';
+import CustomButton from '../../../assets/hooks/customButton/CustomButton.jsx';
 import { Link } from 'react-router-dom';
 
 export default function Login() {
