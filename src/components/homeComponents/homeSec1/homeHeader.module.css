@@ -1,0 +1,33 @@
+.homeBg{
+    background-image: url(../../../assets/images/home/headerBg.png);
+    background-size: cover;
+    background-position: center;
+    height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contant{
+    background-color: #FFF3E3;
+} 
+
+.contant span,
+.contant p{
+    color: black;
+
+}
+
+.contant h1{
+    color: #B88E2F;
+}
+
+.contant a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 120px;
+    color: white;
+    background-color: #B88E2F;
+}
