@@ -2,7 +2,10 @@
     background-color: var(--bgColor);
 }
 
-.dropdown button {
-    border: 1px solid #B88E2F;
+.dropdown {
     background-color: #B88E2F !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
 }

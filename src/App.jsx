@@ -19,6 +19,7 @@ import ChangePassword from './pages/user/login/resetPass/ChangePassword.jsx';
 import Profile from './pages/user/profile/Profile.jsx';
 import UserInfo from './pages/user/profile/userInfo/UserInfo.jsx';
 import Orders from './pages/user/profile/orders/Orders.jsx';
+import UserContextProvider from './components/user/context/userContext/UserContext.jsx';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -64,9 +65,12 @@ export default function App() {
   ]);
 
   return (
-    <CartContextProvider>
-      <ToastContainer />
-      <RouterProvider router={router} />
-    </CartContextProvider>
+    <UserContextProvider>
+      <CartContextProvider>
+        <ToastContainer />
+        <RouterProvider router={router} />
+      </CartContextProvider>
+    </UserContextProvider>
+
   );
 }

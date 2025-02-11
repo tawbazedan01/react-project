@@ -8,12 +8,14 @@ import style from './navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser, faMagnifyingGlass, faHeart } from '@fortawesome/free-solid-svg-icons';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { CartContext } from '../context/CartContext.jsx';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import { CartContext } from '../context/CartContext.jsx';
+import { UserContext } from '../context/userContext/UserContext.jsx';
 
 export default function CustomNavbar() {
   const { cartCount } = useContext(CartContext);
+  const { user, loading } = useContext(UserContext);
 
   return (
     <Navbar expand="lg" sticky='top' className={`${style.bgcolor}`}>
@@ -31,7 +33,7 @@ export default function CustomNavbar() {
             <Nav.Link as={Link} to={'#'}>Contact</Nav.Link>
           </Nav>
 
-          <Nav className="d-flex flex-row gap-3">
+          <Nav className="d-flex flex-row gap-1">
             <NavDropdown title={<FontAwesomeIcon icon={faUser} />} >
               <NavDropdown.Item as={Link} to={'/auth/login'}>Login</NavDropdown.Item>
               <NavDropdown.Item as={Link} to={'/auth/register'}>Register</NavDropdown.Item>
@@ -46,13 +48,18 @@ export default function CustomNavbar() {
               <FontAwesomeIcon icon={faCartShopping} />
               {cartCount}
             </Nav.Link>
-
           </Nav>
+          <Dropdown >
+            <Dropdown.Toggle id="dropdown-button-dark-example1" className={style.dropdown} >
+              welcome  {loading ? "..." : user.userName}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item as={Link} to={'/profile'}>Profile</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item href="#/action-2">LogOut</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
 
-          <DropdownButton id="dropdown-basic-button" className={style.dropdown} title="welcome user">
-            <Dropdown.Item as={Link} to={'/profile'}>Profile</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">LogOut</Dropdown.Item>
-          </DropdownButton>
         </Navbar.Collapse>
       </Container>
     </Navbar>
