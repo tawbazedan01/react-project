@@ -1,16 +1,25 @@
+.bgImage1 {
+  background-image: url('../../../assets/images/bg-img/bg-2.png');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .registerContainer {
-    height: 100vh; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .registerForm {
-    width: 60%; 
-    max-width: 500px; 
-    background: white; 
-    padding: 30px; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  }
-  
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerForm {
+  width: 60%;
+  max-width: 500px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}

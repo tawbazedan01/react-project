@@ -1,4 +1,8 @@
-.bgcolor{
-    background-color: var(--bgColor) ;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+.bgcolor {
+    background-color: var(--bgColor);
+}
+
+.dropdown button {
+    border: 1px solid #B88E2F;
+    background-color: #B88E2F !important;
 }

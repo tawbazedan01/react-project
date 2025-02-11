@@ -16,6 +16,9 @@ import ProtectedRoute from './components/user/ProtectedRoute.jsx';
 import CartContextProvider from './components/user/context/CartContext.jsx';
 import ResetPassword from './pages/user/login/resetPass/ResetPassword.jsx';
 import ChangePassword from './pages/user/login/resetPass/ChangePassword.jsx';
+import Profile from './pages/user/profile/Profile.jsx';
+import UserInfo from './pages/user/profile/userInfo/UserInfo.jsx';
+import Orders from './pages/user/profile/orders/Orders.jsx';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -45,6 +48,13 @@ export default function App() {
         { path: 'products', element: <Products /> },
         { path: 'products/:productId', element: <ProductDetails /> },
         { path: 'cart', element: <Cart /> },
+        {
+          path: 'profile', element: <Profile />,
+          children: [
+            { path: 'info', element: <UserInfo /> },
+            { path: 'orders', element: <Orders /> },
+          ]
+        },
       ],
     },
     {

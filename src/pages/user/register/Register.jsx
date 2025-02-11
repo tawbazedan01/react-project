@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Slide, toast } from "react-toastify";
 import CustomButton from '../../../assets/hooks/customButton/CustomButton.jsx';
+import logo2 from '../../../assets/images/logo-img/House_Logos.png';
 
 
 export default function Register() {
@@ -45,9 +46,13 @@ export default function Register() {
   }
   return (
     <>
+      <div className={`d-flex flex-column ${styles.bgImage1}`}>
+        <img src={logo2} alt="logo" />
+        <h2 className={styles.overlayText1}>Register</h2>
+      </div>
       <div className={styles.registerContainer}>
         <Form onSubmit={handleSubmit(registerUser)} className={styles.registerForm}>
-          {serverError ? <div className='text-danger'>{serverError}</div>:null}
+          {serverError ? <div className='text-danger'>{serverError}</div> : null}
           <h2 className='pb-3'> Register </h2>
           <FloatingLabel controlId="floatingInput" label="UserName" className="mb-3">
             <Form.Control type="text" placeholder=""
@@ -69,9 +74,9 @@ export default function Register() {
 
           </FloatingLabel>
 
-          <CustomButton disabled={isLoading} type="register" text={isLoading ? "Loading..." : "Register"}/>
+          <CustomButton disabled={isLoading} type="register" text={isLoading ? "Loading..." : "Register"} />
 
-         
+
         </Form>
       </div>
     </>

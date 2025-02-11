@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './login.module.css';
 import { Link } from 'react-router-dom';
 import CustomButton from '../../../assets/hooks/customButton/CustomButton.jsx';
+import logo2 from '../../../assets/images/logo-img/House_Logos.png';
 
 
 export default function Login() {
@@ -30,32 +31,38 @@ export default function Login() {
     }
   }
   return (
-    <div className={styles.container}>
-      <div className={styles.formWrapper}>
-        <Form onSubmit={handleSubmit(registerUser)} className={styles.registerForm}>
-          {serverError ? <div className='text-danger'>{serverError}</div> : null}
-          <h2 className='pb-3'> LogIn </h2>
-
-          <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
-            <Form.Control type="email" placeholder=""
-              {...register("email", { required: "email is required" })} />
-            {errors.email ? <div className='text-danger'>{errors.email.message}</div> : null}
-          </FloatingLabel>
-
-          <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
-            <Form.Control type="password" placeholder=""
-              {...register("password", { required: "password is required" })} />
-            {errors.password ? <div className='text-danger'>{errors.password.message}</div> : null}
-
-          </FloatingLabel>
-          <div className='d-flex flex-column gap-3 pb-3'>
-            <Link to="/auth/resetPassword"  style={{ color: '#B88E2F' }}>
-              forget your password! </Link>
-          </div>
-          <CustomButton disabled={isLoading} type="login" text={isLoading ? "Loading..." : "LogIn"} />
-
-        </Form>
+    <>
+      <div className={`d-flex flex-column ${styles.bgImage1}`}>
+        <img src={logo2} alt="logo" />
+        <h2 className={styles.overlayText1}>LogIn</h2>
       </div>
-    </div>
+      <div className={styles.container}>
+        <div className={styles.formWrapper}>
+          <Form onSubmit={handleSubmit(registerUser)} className={styles.registerForm}>
+            {serverError ? <div className='text-danger'>{serverError}</div> : null}
+            <h2 className='pb-3'> LogIn </h2>
+
+            <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+              <Form.Control type="email" placeholder=""
+                {...register("email", { required: "email is required" })} />
+              {errors.email ? <div className='text-danger'>{errors.email.message}</div> : null}
+            </FloatingLabel>
+
+            <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
+              <Form.Control type="password" placeholder=""
+                {...register("password", { required: "password is required" })} />
+              {errors.password ? <div className='text-danger'>{errors.password.message}</div> : null}
+
+            </FloatingLabel>
+            <div className='d-flex flex-column gap-3 pb-3'>
+              <Link to="/auth/resetPassword" style={{ color: '#B88E2F' }}>
+                forget your password! </Link>
+            </div>
+            <CustomButton disabled={isLoading} type="login" text={isLoading ? "Loading..." : "LogIn"} />
+
+          </Form>
+        </div>
+      </div>
+    </>
   );
 }
