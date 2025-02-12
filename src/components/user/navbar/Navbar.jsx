@@ -50,9 +50,10 @@ export default function CustomNavbar() {
             </Nav.Link>
           </Nav>
           <Dropdown >
-            <Dropdown.Toggle id="dropdown-button-dark-example1" className={style.dropdown} >
-              welcome  {loading ? "..." : user.userName}
+            <Dropdown.Toggle id="dropdown-button-dark-example1" className={style.dropdown}>
+              welcome {loading ? "..." : user ? user.userName : ""}
             </Dropdown.Toggle>
+
             <Dropdown.Menu>
               <Dropdown.Item as={Link} to={'/profile'}>Profile</Dropdown.Item>
               <Dropdown.Divider />
