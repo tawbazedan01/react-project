@@ -1,3 +1,31 @@
-.header{
+.header {
    background-color: yellow;
+}
+
+.bgSection {
+   border: 3px solid #F9F1E7;
+   border-radius: 5px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   /* ظل خفيف وناعم */
+   transition: box-shadow 0.3s ease-in-out;
+   /* تأثير سلسي عند التغيير */
+}
+
+.bgSection:hover {
+   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+   /* ظل أقوى عند التحويم */
+}
+
+
+.navSection a {
+   color: var(--secColor);
+}
+
+
+.navSection a:active,
+.navSection a:focus,
+.navSection a:hover {
+   background-color: #B88E2F;
+
+   color: var(--mainColor);
 }

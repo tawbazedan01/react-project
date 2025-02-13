@@ -20,6 +20,8 @@ import Profile from './pages/user/profile/Profile.jsx';
 import UserInfo from './pages/user/profile/userInfo/UserInfo.jsx';
 import Orders from './pages/user/profile/orders/Orders.jsx';
 import UserContextProvider from './components/user/context/userContext/UserContext.jsx';
+import Description from './components/description/Description.jsx';
+import Reviews from './components/reviews/Reviews.jsx';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -47,7 +49,14 @@ export default function App() {
         { path: 'categories', element: <Categories /> },
         { path: 'categories/:categoryId', element: <ProductWithCategory /> },
         { path: 'products', element: <Products /> },
-        { path: 'products/:productId', element: <ProductDetails /> },
+        {
+          path: 'products/:productId', element: <ProductDetails />,
+          children: [
+            { path: 'description', element: <Description /> },
+            { path: 'reviews', element: <Reviews /> }
+          ]
+
+        },
         { path: 'cart', element: <Cart /> },
         {
           path: 'profile', element: <Profile />,
