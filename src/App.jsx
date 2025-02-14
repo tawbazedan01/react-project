@@ -13,74 +13,81 @@ import ProductWithCategory from './pages/user/products/ProductWithCategory.jsx';
 import ProductDetails from './pages/user/products/details/ProductDetails.jsx';
 import Cart from './pages/user/cart/Cart.jsx';
 import ProtectedRoute from './components/user/ProtectedRoute.jsx';
-import CartContextProvider from './components/user/context/CartContext.jsx';
 import ResetPassword from './pages/user/login/resetPass/ResetPassword.jsx';
 import ChangePassword from './pages/user/login/resetPass/ChangePassword.jsx';
 import Profile from './pages/user/profile/Profile.jsx';
 import UserInfo from './pages/user/profile/userInfo/UserInfo.jsx';
 import Orders from './pages/user/profile/orders/Orders.jsx';
-import UserContextProvider from './components/user/context/userContext/UserContext.jsx';
 import Description from './components/description/Description.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
 import Checkout from './pages/user/checkout/Checkout.jsx';
+import AuthProtectedRoute from './components/user/AuthProtectedRoute.jsx';
+import UserContextProvider from './components/user/context/userContext/UserContext.jsx';
+import CartContextProvider from './components/user/context/CartContext.jsx';
+
+const router = createBrowserRouter([
+  {
+    path: '/auth',
+    element: (
+      <AuthProtectedRoute>
+        <AuthLayout />
+      </AuthProtectedRoute>
+    ),
+    children: [
+      { path: 'register', element: <Register /> },
+      { path: 'login', element: <Login /> },
+      { path: 'resetPassword', element: <ResetPassword /> },
+      { path: 'changePassword', element: <ChangePassword /> },
+    ],
+  },
+  {
+    path: '/',
+    element: (
+      // هنا نقوم بتغليف المسارات التي تحتاجها بالـ Providers
+      <UserContextProvider>
+        <CartContextProvider>
+          <ProtectedRoute>
+            <UserLayout />
+          </ProtectedRoute>
+        </CartContextProvider>
+      </UserContextProvider>
+    ),
+    children: [
+      { path: 'home', element: <Home /> },
+      { path: 'categories', element: <Categories /> },
+      { path: 'categories/:categoryId', element: <ProductWithCategory /> },
+      { path: 'products', element: <Products /> },
+      {
+        path: 'products/:productId',
+        element: <ProductDetails />,
+        children: [
+          { path: 'description', element: <Description /> },
+          { path: 'reviews', element: <Reviews /> },
+        ],
+      },
+      { path: 'cart', element: <Cart /> },
+      { path: 'checkout', element: <Checkout /> },
+      {
+        path: 'profile',
+        element: <Profile />,
+        children: [
+          { path: 'info', element: <UserInfo /> },
+          { path: 'orders', element: <Orders /> },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/dashboard',
+    element: <DashboardLayout />,
+  },
+]);
 
 export default function App() {
-  const router = createBrowserRouter([
-    {
-      path: '/auth',
-      element: <AuthLayout />,
-      children: [
-        { path: 'register', element: <Register /> },
-        { path: 'login', element: <Login /> },
-        { path: 'resetPassword', element: <ResetPassword /> },
-        { path: 'changePassword', element: <ChangePassword /> },
-
-
-      ],
-    },
-    {
-      path: '/',
-      element: (
-        <ProtectedRoute>
-          <UserLayout />
-        </ProtectedRoute>
-      ),
-      children: [
-        { path: 'home', element: <Home /> },
-        { path: 'categories', element: <Categories /> },
-        { path: 'categories/:categoryId', element: <ProductWithCategory /> },
-        { path: 'products', element: <Products /> },
-        {
-          path: 'products/:productId', element: <ProductDetails />,
-          children: [
-            { path: 'description', element: <Description /> },
-            { path: 'reviews', element: <Reviews /> }
-          ]
-
-        },
-        { path: 'cart', element: <Cart /> },
-        { path: 'checkout', element: <Checkout /> },
-        {
-          path: 'profile', element: <Profile />,
-          children: [
-            { path: 'info', element: <UserInfo /> },
-            { path: 'orders', element: <Orders /> },
-          ]
-        },
-      ],
-    },
-    {
-      path: '/dashboard',
-      element: <DashboardLayout />,
-    },
-  ]);
-
   return (
-    <UserContextProvider>
-      <CartContextProvider>
-        <ToastContainer />
-        <RouterProvider router={router} />
-      </CartContextProvider>
-    </UserContextProvider>
+    <>
+      <ToastContainer />
+      <RouterProvider router={router} />
+    </>
   );
 }

@@ -1,22 +1,27 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/images/logo-img/logo.png';
 import style from './navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser, faMagnifyingGlass, faHeart } from '@fortawesome/free-solid-svg-icons';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import { CartContext } from '../context/CartContext.jsx';
 import { UserContext } from '../context/userContext/UserContext.jsx';
 
 export default function CustomNavbar() {
+  const navigate = useNavigate();
   const { cartCount } = useContext(CartContext);
-  const { user, loading } = useContext(UserContext);
+  const { user, loading, setUser } = useContext(UserContext);
 
+  const logout = () => {
+    localStorage.removeItem('userToken');
+    setUser(null);
+    navigate('/auth/login');
+  }
   return (
     <Navbar expand="lg" sticky='top' className={`${style.bgcolor}`}>
       <Container>
@@ -57,10 +62,9 @@ export default function CustomNavbar() {
             <Dropdown.Menu>
               <Dropdown.Item as={Link} to={'/profile'}>Profile</Dropdown.Item>
               <Dropdown.Divider />
-              <Dropdown.Item href="#/action-2">LogOut</Dropdown.Item>
+              <Dropdown.Item onClick={logout}>LogOut</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-
         </Navbar.Collapse>
       </Container>
     </Navbar>

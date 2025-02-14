@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import style from './cart.module.css';
 import Table from 'react-bootstrap/Table';
-import { CartContext } from '../../../components/user/context/CartContext';
+import { CartContext } from '../../../components/user/context/CartContext.jsx';
 import CustomButton from '../../../assets/hooks/customButton/CustomButton.jsx';
 
 

@@ -13,7 +13,7 @@ export default function UserSidebar() {
 
     const [isCollapsed, setIsCollapsed] = useState();
 
-    const toggleCollapse = ()=>{
+    const toggleCollapse = () => {
         setIsCollapsed(!isCollapsed)
     }
 
@@ -22,7 +22,7 @@ export default function UserSidebar() {
         <Sidebar collapsed={isCollapsed}>
             <Menu className={`${style.sidebar}`} >
                 <div className={style.collapse1}>
-                {isCollapsed? <AiOutlineRightCircle  onClick={toggleCollapse} /> : <AiOutlineLeftCircle onClick={toggleCollapse} /> }
+                    {isCollapsed ? <AiOutlineRightCircle onClick={toggleCollapse} /> : <AiOutlineLeftCircle onClick={toggleCollapse} />}
                 </div>
                 <MenuItem component={<Link to="/profile/info" />}> <div className={style.icons}> <FaInfoCircle className={style.icon} />  <span>User Info</span> </div> </MenuItem>
                 <MenuItem component={<Link to="/profile/orders" />}> <div className={style.icons}> <FaFirstOrderAlt className={style.icon} /> <span>Orders </span> </div> </MenuItem>
