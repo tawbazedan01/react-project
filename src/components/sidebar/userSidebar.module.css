@@ -2,3 +2,24 @@
     height: 100vh;
     background-color: #FAF3EA;
 }
+
+.collapse1{
+  padding: 8px;
+  font-size: 25px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.icons{
+    display: flex;
+  text-align: center; 
+  justify-content: start;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon{
+   color: black;
+   font-size: 18px;
+}

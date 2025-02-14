@@ -70,14 +70,18 @@ export default function ProductDetails() {
                     <div className="col-md-6">
                         <Card className="p-4 shadow-sm border-0">
                             <Card.Body>
-                                <Card.Title className="mb-3">{product.name}</Card.Title>
+                                <Card.Title className={`${style.card1}mt-3`}>{product.name}</Card.Title>
                                 <Card.Text><strong>Price:</strong> ${product.finalPrice}</Card.Text>
                                 <Card.Text><strong>Rating:</strong> {data.avgRating ? data.avgRating.toFixed(1) : ''} / 5</Card.Text>
                                 <Button className={`${style.add} mt-3`} onClick={addProductToCart}>Add to Cart</Button>
                             </Card.Body>
-                            <div className="mt-3">
+                            <div className={`${style.card2}mt-3`}>
                                 <Card.Text><strong>Slug:</strong> {product.slug}</Card.Text>
                                 <Card.Text><strong>Category:</strong> {product.category}</Card.Text>
+                                <div>
+                                    <div className={`${style.icons}`}>
+                                    </div>
+                                </div>
                             </div>
                         </Card>
                     </div>

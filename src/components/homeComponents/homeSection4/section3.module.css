@@ -1,7 +1,20 @@
 .contant {
+    width: 100%;
     background-color: var(--sectionColor);
 }
 
 .contant2 {
     width: 100%;
+}
+
+.contant2 a {
+    color: white;
+    background-color: #B88E2F;
+    padding: 8px;
+    width: 62%;
+    text-align: center;
+}
+
+.contant2 a:hover {
+    background-color: var(--mainColor);
 }

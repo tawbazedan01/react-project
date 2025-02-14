@@ -22,6 +22,7 @@ import Orders from './pages/user/profile/orders/Orders.jsx';
 import UserContextProvider from './components/user/context/userContext/UserContext.jsx';
 import Description from './components/description/Description.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
+import Checkout from './pages/user/checkout/Checkout.jsx';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -58,6 +59,7 @@ export default function App() {
 
         },
         { path: 'cart', element: <Cart /> },
+        { path: 'checkout', element: <Checkout /> },
         {
           path: 'profile', element: <Profile />,
           children: [
@@ -80,6 +82,5 @@ export default function App() {
         <RouterProvider router={router} />
       </CartContextProvider>
     </UserContextProvider>
-
   );
 }

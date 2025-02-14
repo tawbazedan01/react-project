@@ -12,24 +12,28 @@ export default function HomeSection4() {
 
     <Container>
       <Row className='pt-5 pb-5'>
-        <Col md={10}>
+        <Col md={11}>
           <div className={`${style.contant} d-flex gap-5 p-5`}>
-            <div className={` pt-2 pb-4`}>
-              <div className={`${style.contant2}`}>
-                <h1>50+ Beautiful rooms inspiration</h1>
+            <div className='pt-2 pb-4'>
+              <div className={`${style.contant2} d-flex flex-column gap-1`}>
+                <h1 >50+ Beautiful rooms inspiration</h1>
                 <p>Our designer already made a lot of beautiful prototipe of rooms that inspire you</p>
                 <Link>Explore More</Link>
               </div>
             </div>
             <div className='d-flex ps-5 gap-2 justify-content-start'>
-              <img src={image1} width="220px" height="350px" alt="bg-pic" />
-              <img src={image2} width="220px" height="290px" alt="bg-pic" />
-              <img src={image3} width="220px" height="290px" alt="bg-pic" />
+              <div className='ps-5'>
+                <img src={image1} width="220px" height="350px" alt="bg-pic" />
+              </div>
+              <div className='ps-2'>
+                <img src={image2} width="220px" height="290px" alt="bg-pic" />
+              </div>
+              <div className='ps-2'>
+                <img src={image3} width="220px" height="290px" alt="bg-pic" />
+              </div>
             </div>
           </div>
-
         </Col>
-
       </Row>
     </Container>
 
