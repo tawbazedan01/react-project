@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import SectionFooter from '../../../components/user/footerSection/SectionFooter.jsx';
 import logo2 from '../../../assets/images/logo-img/House_Logos.png';
 import style from './checkout.module.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
+import { CartContext } from '../../../components/user/context/CartContext.jsx';
 
 export default function Checkout() {
+    const { subtotal, total } = useContext(CartContext);
+    const [data, setData] = useState(null);
+
+    const token = localStorage.getItem("userToken");
+
+    const getCartData = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_BURL}/cart`, {
+                headers: {
+                    Authorization: `Tariq__${token}`,
+                },
+            });
+            setData(response.data.products);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        getCartData();
+    }, []);
+
     return (
         <div>
             <div className={` d-flex flex-column ${style.bgImage1}`}>
@@ -27,53 +50,61 @@ export default function Checkout() {
                                 <div className='d-flex flex-column gap-3 p-3'>
                                     <div className='d-flex gap-3'>
                                         <div>
-                                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                            <Form.Group className="mb-3" controlId="firstName">
                                                 <Form.Label>First Name</Form.Label>
                                                 <Form.Control type="text" placeholder="" />
                                             </Form.Group>
                                         </div>
                                         <div>
-                                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                            <Form.Group className="mb-3" controlId="lastName">
                                                 <Form.Label>Last Name</Form.Label>
                                                 <Form.Control type="text" placeholder="" />
                                             </Form.Group>
                                         </div>
                                     </div>
-                                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Group className="mb-3" controlId="companyName">
                                         <Form.Label>Company Name (Optional)</Form.Label>
                                         <Form.Control type="text" placeholder="" />
                                     </Form.Group>
-                                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Group className="mb-3" controlId="streetAddress">
                                         <Form.Label>Street address</Form.Label>
-                                        <Form.Control type="text" placeholder="" required />
+                                        <Form.Control type="text" placeholder=""  />
                                     </Form.Group>
-                                    <Form.Select aria-label="Default select example" required>
+                                    <Form.Select aria-label="Town / City" required>
                                         <option>Town / City</option>
-                                        <option value="1">Tulkarm</option>
-                                        <option value="2">Nablus</option>
-                                        <option value="3">Ramallah</option>
-                                        <option value="4">Hebron</option>
-                                        <option value="5">Jenin</option>
-                                        <option value="6">Bethlehem</option>
-                                        <option value="7">Jericho</option>
-                                        <option value="8">Gaza</option>
-                                        <option value="9">Qalqilya</option>
-                                        <option value="10">Salfit</option>
-                                        <option value="11">Rafah</option>
-                                        <option value="12">Beit Lahia</option>
-                                        <option value="13">Deir al-Balah</option>
-                                        <option value="14">Khan Yunis</option>
-                                        <option value="15">Jerusalem</option>
-
+                                        <option value="Tulkarm">Tulkarm</option>
+                                        <option value="Nablus">Nablus</option>
+                                        <option value="Ramallah">Ramallah</option>
+                                        <option value="Hebron">Hebron</option>
+                                        <option value="Jenin">Jenin</option>
+                                        <option value="Bethlehem">Bethlehem</option>
+                                        <option value="Jericho">Jericho</option>
+                                        <option value="Gaza">Gaza</option>
+                                        <option value="Qalqilya">Qalqilya</option>
+                                        <option value="Salfit">Salfit</option>
+                                        <option value="Rafah">Rafah</option>
+                                        <option value="Beit Lahia">Beit Lahia</option>
+                                        <option value="Deir al-Balah">Deir al-Balah</option>
+                                        <option value="Khan Yunis">Khan Yunis</option>
+                                        <option value="Jerusalem">Jerusalem</option>
                                     </Form.Select>
 
-                                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Group className="mb-3" controlId="text">
+                                        <Form.Label>Coupon Name</Form.Label>
+                                        <Form.Control type="text" placeholder="" />
+                                    </Form.Group>
+                                    
+                                    <Form.Group className="mb-3" controlId="phone">
+                                        <Form.Label>Phone</Form.Label>
+                                        <Form.Control type='phone' placeholder="" />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="email">
                                         <Form.Label>Email address</Form.Label>
                                         <Form.Control type="email" placeholder="" />
                                     </Form.Group>
 
                                     <FloatingLabel
-                                        controlId="floatingTextarea"
+                                        controlId="additionalInfo"
                                         label="Additional information"
                                         className="mb-3"
                                     >
@@ -92,16 +123,24 @@ export default function Checkout() {
                                     <div className='d-flex justify-content-between'>
                                         <div className={`${style.product}`}>
                                             <h6>Product</h6>
-                                            <span className={style.total2}>productName</span>
+                                            {data ? (
+                                                data.map(item => (
+                                                    <div key={item._id}>
+                                                        <span className={style.total2}>{item.details.name} x {item.quantity}</span>
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <span>Loading products...</span>
+                                            )}
                                         </div>
                                         <div className={`${style.subtotal}`}>
                                             <h6>Subtotal</h6>
-                                            <span className={style.total3}>Rs. 250,000.00</span>
+                                            <span className={style.total3}>Rs. {subtotal}</span>
                                         </div>
                                     </div>
                                     <div className={`${style.total} d-flex justify-content-between`}>
                                         <span>Total</span>
-                                        <h4>Rs. 250,000.00</h4>
+                                        <h4>Rs. {total}</h4>
                                     </div>
                                 </div>
 
@@ -112,7 +151,7 @@ export default function Checkout() {
                                     </p>
                                 </div>
                                 <div className={`${style.order} d-flex justify-content-center align-items-center`}>
-                                    <Link to="/orders">Place order</Link>
+                                    <Button type='submit'>Place order</Button>
                                 </div>
                             </div>
                         </div>

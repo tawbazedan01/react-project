@@ -1,0 +1,16 @@
+.update button{
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mainColor) !important;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    color: var(--bgColor) !important;
+}
+
+.update button:hover {
+    background-color: #B88E2F !important;
+    color: var(--bgColor) !important;
+}

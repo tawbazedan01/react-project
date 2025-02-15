@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Loading from '../../../../components/loading/Loading.jsx';
+import style from './userInfo.module.css';
 
 export default function UserInfo() {
   const { user, loading } = useContext(UserContext);
@@ -75,8 +76,8 @@ export default function UserInfo() {
                   <Form.Label>Update Your Profile Pic</Form.Label>
                   <Form.Control type="file" {...register('image')} onChange={handleImageChange} accept="image/*" />
                 </Form.Group>
-                <div className='pt-3 text-center'>
-                  <Button type='submit'>Update</Button>
+                <div className={`${style.update} pt-3 text-center`}>
+                  <Button  type='submit'>Update</Button>
                 </div>
               </Form>
             </Col>

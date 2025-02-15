@@ -45,7 +45,7 @@ export default function ProductDetails() {
                 navigate('/cart');
             }
         } catch (error) {
-            console.log("Error adding product to cart:", error.message);
+            console.log("Error adding product to cart");
         }
     };
 

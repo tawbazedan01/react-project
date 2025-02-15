@@ -16,7 +16,7 @@ export default function Cart() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { cartCount, setCartCount } = useContext(CartContext); // تم إضافة useContext هنا
+  const { cartCount, setCartCount, subtotal, total } = useContext(CartContext);
 
   const token = localStorage.getItem("userToken");
 
@@ -198,12 +198,13 @@ export default function Cart() {
                 <div className='pt-3 d-flex flex-column gap-4'>
                   <div className="d-flex gap-5">
                     <h6>Subtotal</h6>
-                    <span className={style.total1}>Rs. 250,000.00</span>
+                    <span className={style.total1}>Rs. {subtotal}</span>
                   </div>
                   <div className="d-flex gap-5">
                     <h6>Total</h6>
-                    <span className={style.total2}>Rs. 250,000.00</span>
+                    <span className={style.total2}>Rs. {total}</span>
                   </div>
+
                   <div className={`ps-4 ${style.check}`}>
                     <Link to="/checkout">Checkout</Link>
                   </div>

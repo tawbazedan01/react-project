@@ -8,7 +8,8 @@
     justify-content: center;
 }
 
-.order a {
+.order button{
+    border: none !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,14 +28,20 @@ textarea:focus {
     border-color: #B88E2F !important;
 }
 
+.product {
+    max-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 .link1 {
     font-weight: 700;
     color: #B88E2F;
 }
 
-.order a:hover {
-
-    background-color: #B88E2F;
-
-    color: var(--bgColor);
+.order button:hover {
+    background-color: #B88E2F !important;
+    color: var(--bgColor) !important;
 }
