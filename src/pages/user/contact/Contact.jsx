@@ -86,7 +86,7 @@ export default function Contact() {
                     <Form.Control as="textarea" rows={3} required />
                   </Form.Group>
                 </Form>
-                <button type='submit'> Submit </button>
+                <button className={style.submitf} type='submit'> Submit </button>
               </div>
 
             </Col>

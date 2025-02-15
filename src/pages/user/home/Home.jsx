@@ -5,11 +5,12 @@ import Categories from '../.../../../../components/categories/Categories.jsx';
 import ProductsH from '../../../components/products1/ProductsH.jsx';
 import Slider from '../../../components/homeComponents/homeSec3/Slider.jsx';
 import HomeSection4 from '../../../components/homeComponents/homeSection4/HomeSection4.jsx';
-
+import AboutComponent from '../../../components/aboutComponent/AboutComponent.jsx'
 export default function Home() {
   return (
     <div>
       <HomeHeader />
+      <AboutComponent />
       <HomeSection2 />
       <Categories />
       <HomeSection4 />

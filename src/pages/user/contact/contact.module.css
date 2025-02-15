@@ -29,7 +29,7 @@ textarea:focus {
     border-color: #B88E2F !important;
 }
 
-button {
+.submitf {
     padding: 15px;
     border-radius: 5px !important;
     color: var(--bgColor);
@@ -37,7 +37,7 @@ button {
     border: 1px solid #B88E2F;
 }
 
-button:hover {
+.submitf:hover {
     background-color: var(--mainColor);
     border: 1px solid var(--mainColor);
 }
