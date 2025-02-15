@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import style from './header.module.css';
 
-
-export default function () {
+export default function OedersHeader() {
     return (
         <div className={`${style.header} p-3`}>
             <div className={`${style.title}  pt-1 pb-1 d-flex gap-3  align-items-center `}>
@@ -17,7 +16,7 @@ export default function () {
                     <FontAwesomeIcon icon={faChevronRight} />
                     <div className={style.separator}></div>
                 </div>
-                <span>Info</span>
+                <span>Orders</span>
             </div>
         </div>
     )

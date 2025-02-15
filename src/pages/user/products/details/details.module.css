@@ -16,6 +16,26 @@
    /* ظل أقوى عند التحويم */
 }
 
+.icons .icon a {
+   font-size: 25px;
+   color: black;
+}
+
+.icons .icon a:hover {
+   color: #B88E2F;
+}
+
+.add {
+   border: none !important;
+   background-color: #B88E2F !important;
+   color: var(--bgColor) !important;
+}
+
+.add:hover {
+   background-color: var(--secColor) !important;
+   color: var(--bgColor) !important;
+}
+
 
 .navSection a {
    color: var(--secColor);

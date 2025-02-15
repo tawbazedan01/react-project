@@ -1,0 +1,42 @@
+
+
+.heading tr th {
+    background-color: #F9F1E7;
+}
+
+.productName {
+    max-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contant1,
+.total1 {
+    color: var(--secColor);
+}
+
+.qty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #F9F1E7;
+    border: 1px solid black;
+    border-radius: 5px;
+
+}
+
+.contant2 {
+    color: var(--mainColor);
+}
+
+.contant2 .icon {
+    color: #B88E2F;
+}
+
+.total2 {
+    color: #B88E2F;
+    font-weight: 600;
+}
+

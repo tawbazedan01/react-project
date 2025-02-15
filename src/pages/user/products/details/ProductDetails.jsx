@@ -11,6 +11,10 @@ import style from './details.module.css';
 import { CartContext } from '../../../../components/user/context/CartContext.jsx';
 import { Row, Col, Container } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
+import { FaFacebookSquare } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+
 
 export default function ProductDetails() {
     const { productId } = useParams();
@@ -51,7 +55,7 @@ export default function ProductDetails() {
             <section className="product container py-5">
                 <div className="row justify-content-center">
                     <div className="col-md-6">
-                        <Card className="p-4 shadow-sm border-0">
+                        <Card className="p-4 border">
                             <div className="d-flex gap-4">
                                 <div className='d-flex flex-column gap-2 justify-content-center align-items-center'>
                                     {product.subImages.map((image, index) => (
@@ -68,18 +72,38 @@ export default function ProductDetails() {
                         </Card>
                     </div>
                     <div className="col-md-6">
-                        <Card className="p-4 shadow-sm border-0">
+                        <Card className="p-4  border">
                             <Card.Body>
                                 <Card.Title className={`${style.card1}mt-3`}>{product.name}</Card.Title>
                                 <Card.Text><strong>Price:</strong> ${product.finalPrice}</Card.Text>
                                 <Card.Text><strong>Rating:</strong> {data.avgRating ? data.avgRating.toFixed(1) : ''} / 5</Card.Text>
                                 <Button className={`${style.add} mt-3`} onClick={addProductToCart}>Add to Cart</Button>
                             </Card.Body>
-                            <div className={`${style.card2}mt-3`}>
-                                <Card.Text><strong>Slug:</strong> {product.slug}</Card.Text>
-                                <Card.Text><strong>Category:</strong> {product.category}</Card.Text>
-                                <div>
-                                    <div className={`${style.icons}`}>
+                            <div className={`${style.card2}mt-3 p-3`}>
+                                <Card.Text><span>Slug:</span> {product.slug}</Card.Text>
+                                <Card.Text><span>Category:</span> {product.category}</Card.Text>
+                                <div className='d-flex justify-content-start align-items-center  gap-2'>
+
+                                    <span>Share:</span>
+                                    <div className={`${style.icons} d-flex  gap-3`}>
+
+                                        <div className={`${style.icon} `} >
+                                            <Link>
+                                                <FaFacebookSquare />
+                                            </Link>
+                                        </div>
+                                        <div className={`${style.icon}`} >
+                                            <Link>
+                                                <FaLinkedin />
+
+                                            </Link>
+                                        </div>
+                                        <div className={`${style.icon}`} >
+                                            <Link>
+                                                <FaTwitter />
+                                            </Link>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

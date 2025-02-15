@@ -30,7 +30,7 @@
     align-items: center;
     padding: 10px;
     background-color: #F9F1E7;
-    border: 1px solid black ;
+    border: 1px solid black;
     border-radius: 5px;
 
 }
@@ -52,17 +52,24 @@
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
-    border: 2px solid var(--mainColor); /* الحدود بلون الـ mainColor */
+    border: 2px solid var(--mainColor);
+    /* الحدود بلون الـ mainColor */
     border-radius: 8px;
-    background-color: var(--sectionColor); /* خلفية بلون الـ sectionColor */
-    border-color: var(--sectionColor); /* حدود بلون الـ sectionColor */
-    color: var(--mainColor); /* النص بلون الـ mainColor */
+    background-color: var(--sectionColor);
+    /* خلفية بلون الـ sectionColor */
+    border-color: var(--sectionColor);
+    /* حدود بلون الـ sectionColor */
+    color: var(--mainColor);
+    /* النص بلون الـ mainColor */
 }
 
 .shopping:hover {
-    background-color: var(--mainColor); /* تغيير الخلفية عند المرور */
-    border-color: var(--mainColor); /* تغيير الحدود عند المرور */
-    color: var(--bgColor); /* تغيير النص عند المرور */
+    background-color: var(--mainColor);
+    /* تغيير الخلفية عند المرور */
+    border-color: var(--mainColor);
+    /* تغيير الحدود عند المرور */
+    color: var(--bgColor);
+    /* تغيير النص عند المرور */
 }
 
 .cartTotal {
