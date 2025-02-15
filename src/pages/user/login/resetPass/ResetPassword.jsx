@@ -21,7 +21,6 @@ export default function ResetPassword() {
         email: email,
       });
 
-      // تأكد من أن الرد من السيرفر كان ناجحاً
       if (response.status === 200) {
         toast.success('A link has been sent to your email.');
         navigate('/auth/changePassword');
@@ -31,7 +30,7 @@ export default function ResetPassword() {
       }
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Failed to send reset link. Please try again.');  // عرض رسالة خطأ إذا فشل الطلب
+      toast.error('Failed to send reset link. Please try again.');
     }
   };
 

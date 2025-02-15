@@ -77,7 +77,7 @@ export default function UserInfo() {
                   <Form.Control type="file" {...register('image')} onChange={handleImageChange} accept="image/*" />
                 </Form.Group>
                 <div className={`${style.update} pt-3 text-center`}>
-                  <Button  type='submit'>Update</Button>
+                  <Button type='submit'>Update</Button>
                 </div>
               </Form>
             </Col>

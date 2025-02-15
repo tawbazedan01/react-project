@@ -44,7 +44,8 @@ export default function Cart() {
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div>Error: Something went wrong, please try again later.</div>;
+
   }
 
   const incQty = async (productId) => {
