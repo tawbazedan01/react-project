@@ -24,6 +24,8 @@ import Checkout from './pages/user/checkout/Checkout.jsx';
 import AuthProtectedRoute from './components/user/AuthProtectedRoute.jsx';
 import UserContextProvider from './components/user/context/userContext/UserContext.jsx';
 import CartContextProvider from './components/user/context/CartContext.jsx';
+import Contact from './pages/user/contact/Contact.jsx';
+import About from './pages/user/about/About.jsx';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +67,8 @@ const router = createBrowserRouter([
           { path: 'reviews', element: <Reviews /> },
         ],
       },
+      { path: 'about', element: <About /> },
+      { path: 'contact', element: <Contact /> },
       { path: 'cart', element: <Cart /> },
       { path: 'checkout', element: <Checkout /> },
       {

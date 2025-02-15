@@ -34,8 +34,8 @@ export default function CustomNavbar() {
             <Nav.Link as={Link} to={'/home'}>Home</Nav.Link>
             <Nav.Link as={Link} to={'/categories'}>Categories</Nav.Link>
             <Nav.Link as={Link} to={'/products'}>Products</Nav.Link>
-            <Nav.Link as={Link} to={'#'}>About</Nav.Link>
-            <Nav.Link as={Link} to={'#'}>Contact</Nav.Link>
+            <Nav.Link as={Link} to={'/about'}>About</Nav.Link>
+            <Nav.Link as={Link} to={'/contact'}>Contact</Nav.Link>
           </Nav>
 
           <Nav className="d-flex flex-row gap-1">

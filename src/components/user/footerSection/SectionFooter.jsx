@@ -14,7 +14,7 @@ export default function SectionFooter() {
                         <FontAwesomeIcon className={`${style.icons}`} icon={faTrophy} />
                         <div>
                             <h6>High Quality</h6>
-                            <span>crafted from top materials</span>
+                            <span >crafted from top materials</span>
                         </div>
                     </div>
                     <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center align-items-center mb-4 gap-lg-2 gap-md-3 gap-sm-4">
