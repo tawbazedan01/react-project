@@ -119,7 +119,7 @@ export default function ProductDetails() {
                             <Col md={12}>
                                 <Nav className="d-flex justify-content-center align-items-center" variant="tabs">
                                     <Nav.Item>
-                                        <Nav.Link as={Link} to={`/products/${productId}/description`}>Description</Nav.Link>
+                                        <Nav.Link as={Link} to={`/products/${productId}/description`}>Description </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
                                         <Nav.Link as={Link} to={`/products/${productId}/reviews`}>Reviews</Nav.Link>

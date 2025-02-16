@@ -45,7 +45,6 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      // هنا نقوم بتغليف المسارات التي تحتاجها بالـ Providers
       <UserContextProvider>
         <CartContextProvider>
           <ProtectedRoute>
@@ -63,6 +62,7 @@ const router = createBrowserRouter([
         path: 'products/:productId',
         element: <ProductDetails />,
         children: [
+          { index: true, element: <Description /> },
           { path: 'description', element: <Description /> },
           { path: 'reviews', element: <Reviews /> },
         ],
@@ -75,6 +75,7 @@ const router = createBrowserRouter([
         path: 'profile',
         element: <Profile />,
         children: [
+          { index: true, element: <UserInfo /> },
           { path: 'info', element: <UserInfo /> },
           { path: 'orders', element: <Orders /> },
         ],

@@ -46,6 +46,5 @@
 .navSection a:focus,
 .navSection a:hover {
    background-color: #B88E2F;
-
    color: var(--mainColor);
 }
