@@ -67,7 +67,7 @@ export default function Contact() {
               </div>
             </Col>
             <Col md={7}>
-              <div className='p-5 w-75'>
+              <div className='p-5 '>
                 <Form>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Your Name</Form.Label>

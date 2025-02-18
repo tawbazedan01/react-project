@@ -1,0 +1,20 @@
+.header {
+    background-color: #F9F1E7;
+    height: 70px;
+}
+
+
+
+.separator {
+    width: 1px;
+    height: 35px;
+    background-color: #000;
+    margin: 0 5px;
+}
+
+
+@media (max-width: 1200px) {
+    .header {
+        height: 120px;
+    }
+}
