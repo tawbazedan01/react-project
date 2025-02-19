@@ -28,7 +28,7 @@ export default function Products() {
   };
 
   useEffect(() => {
-    if (data && categoriesData) {
+    if (data && data.products && categoriesData) {
       let filtered = data.products; // استخدم البيانات الأساسية من fetch
 
       // تصفية المنتجات بناءً على الفئة
@@ -69,11 +69,11 @@ export default function Products() {
         onSearchChange={handleSearchChange}
         onFilterChange={handleFilterChange}
         onSortChange={handleSortChange}
-        categories={categoriesData.categories}
+        categories={categoriesData?.categories || []}
       />
       <div className="products container py-5">
         <div className="row">
-          {filteredProducts.length > 0 ? (
+          {filteredProducts && filteredProducts.length > 0 ? (
             filteredProducts.map((product, index) => (
               <Product key={index} product={product} />
             ))

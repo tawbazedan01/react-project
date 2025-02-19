@@ -13,7 +13,7 @@ import style from './section.module.css';
 
 export default function Slider() {
   return (
-    <Container className="d-md-none">
+    <Container className="d-none d-xl-block">
       <div className="d-flex flex-column justify-content-center align-items-center pt-5 pb-5">
         <h2>#FuniroFurniture</h2>
         <span>Share your setup with</span>
