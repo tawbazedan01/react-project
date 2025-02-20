@@ -8,13 +8,12 @@ import image2 from '../../../assets/images/home/section3/Rectangle11.png';
 import image3 from '../../../assets/images/home/section3/Rectangle12.png';
 
 export default function HomeSection4() {
-  // إعدادات الحركة (يطلع وينزل)
   const floatAnimation = {
-    y: [0, -20, 0], // حركة طلوع ونزول
+    y: [0, -20, 0],
     transition: {
-      duration: 3, // مدة الحركة
-      repeat: Infinity, // تتكرر باستمرار
-      ease: 'easeInOut' // حركة سلسة
+      duration: 3,
+      repeat: Infinity,
+      ease: 'easeInOut'
     }
   };
 
@@ -32,13 +31,13 @@ export default function HomeSection4() {
             </div>
           </Col>
 
-          <Col md={5}>
+          <Col md={5}  >
             <div className='d-flex flex-sm-column flex-md-column flex-lg-row pt-3 gap-3 justify-content-start'>
               {/* الصور مع الحركة */}
               {[image1, image2, image3].map((img, idx) => (
                 <motion.div
                   key={idx}
-                  className='ps-2'
+                  className={`${style.hideOnSmall} ps-2`}
                   animate={floatAnimation} // تطبيق حركة الطلوع والنزول
                   whileHover={{ scale: 1.05 }} // تكبير عند الهوفر
                   style={{ cursor: 'pointer' }}

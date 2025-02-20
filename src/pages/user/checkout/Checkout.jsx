@@ -58,6 +58,13 @@ export default function Checkout() {
 
             navigate('/profile/orders');
         } catch (error) {
+            toast.promise(
+                saveSettings(settings),
+                {
+                    error: <b>Your order is currently pending. Please check your orders page later.</b>,
+                }
+            );
+
             toast.error('Something went wrong, please try again later!');
             console.error('Error placing order:', error);
         } finally {
