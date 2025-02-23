@@ -10,23 +10,24 @@ export default function Description() {
     if (isLoading) return <Loading />;
     if (error) return <p className="text-danger">Error: {error.message}</p>;
 
-    const product = data?.product; // استخدم `?.` لتجنب الأخطاء إذا لم تصل البيانات
+    const product = data?.product;
 
     return (
         <div className='p-2 d-flex flex-column gap-2 justify-content-center align-items-center'>
             <div className='pt-2 pb-2'>
                 <p>{product?.description || "No description available."}</p>
             </div>
-            <div className='d-flex gap-2 pt-5'>
+            <div className='d-flex gap-2 pt-5 flex-column flex-md-row'>
                 {product?.subImages?.map((image, index) => (
                     <img
                         key={index}
                         src={image.secure_url}
                         alt={`subimage-${index}`}
-                        width='250px'
+                        width='200px'
                     />
                 ))}
             </div>
+
         </div>
     );
 }

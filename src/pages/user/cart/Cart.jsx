@@ -135,8 +135,9 @@ export default function Cart() {
 
       <section className={`p-5 m-1 ${style.cart2}`}>
         <div className="container">
-          <div className="row">
-            <div className="col-12 col-md-8">
+          <div className="row gap-3 gap-md-3 gap-lg-0">
+
+            <div className="col-12 col-lg-8">
               <div className={`d-flex flex-column ${style.contant}`}>
                 <div className="table-responsive">
                   <Table striped bordered hover responsive>
@@ -193,7 +194,7 @@ export default function Cart() {
               </div>
             </div>
 
-            <div className="col-12 col-md-4">
+            <div className="col-12 col-md-7 col-lg-4">
               <div className={`ps-5 pb-5 ${style.cartTotal}`}>
                 <h3 className='pt-5'>Cart Totals</h3>
                 <div className='pt-3 d-flex flex-column gap-4'>

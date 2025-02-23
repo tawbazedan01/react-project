@@ -6,6 +6,7 @@ import { FaStar } from 'react-icons/fa'; // استيراد أيقونة النج
 import { toast } from 'react-toastify'; // استيراد التوست
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
+import CustomButton from '../../assets/hooks/customButton/CustomButton.jsx';
 import style from './review.module.css';
 
 export default function Reviews() {
@@ -13,22 +14,7 @@ export default function Reviews() {
     const { data, isLoading, error } = useFetch(`${import.meta.env.VITE_BURL}/products/${productId}`);
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState(0);
-    const [hasPurchased, setHasPurchased] = useState(false); // حالة شراء المستخدم
     const [isSubmitting, setIsSubmitting] = useState(false); // حالة إرسال التعليق
-
-    useEffect(() => {
-        const checkPurchase = async () => {
-            const token = localStorage.getItem('userToken');
-            if (!token) {
-                setHasPurchased(false);
-                return;
-            }
-            // هنا من المفترض أن نقوم بالتحقق مما إذا كان المستخدم قد اشترى المنتج
-            setHasPurchased(true);
-        };
-
-        checkPurchase();
-    }, [productId]);
 
     if (isLoading) {
         return <Loading />;
@@ -48,54 +34,43 @@ export default function Reviews() {
         setRating(rating);
     };
 
-    const handleSubmit = async () => {
-        if (!hasPurchased) {
-            // عرض التوست مباشرة عند الضغط على زر Submit إذا لم يكن قد اشترى المنتج
-            toast.error(
-                "You cannot add a review because you have not purchased the product.\n\nYou can only add a review if you have purchased this product.",
-                {
-                    duration: 6000, // عرض التوست لمدة 6 ثوانٍ
-                }
-            );
-            return; // توقف التنفيذ عند هذه النقطة
+    const review = async () => {
+        const token = localStorage.getItem('userToken');
+
+        if (!token) {
+            toast.error("Please log in to submit a review.");
+            return;
         }
 
-        if (comment && rating > 0) {
-            setIsSubmitting(true);
-            const token = localStorage.getItem('userToken');
-            try {
-                const response = await axios.post(`${import.meta.env.VITE_BURL}/products/${productId}/review`, {
-                    comment: comment,
-                    rating: rating,
-                }, {
-                    headers: {
-                        Authorization: `Token__${token}`,
-                    }
-                });
+        if (!comment || rating === 0) {
+            toast.error("Please provide both a rating and a comment.");
+            return;
+        }
 
-                // هنا نتأكد من أن التوست سيظهر فقط إذا كان الرد إيجابيًا
-                if (response.data.success) {
-                    toast.success("Your review has been added successfully!");
-                    setComment('');
-                    setRating(0);
-                } else {
-                    // يمكنك فقط إضافة هذه الرسالة إذا كنت ترغب في إظهار شيء عند فشل الإرسال.
-                    // toast.error("Failed to submit your review.");
+        setIsSubmitting(true);
+
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_BURL}/products/${productId}/review`, {
+                comment: comment,
+                rating: rating,
+            }, {
+                headers: {
+                    Authorization: `Tariq__${token}`,
                 }
-            } catch (error) {
-                // تجاهل رسائل الخطأ الخاصة بالـ API هنا
-                // وعرض فقط رسالة التوست التحذيرية إذا لم يشترِ المنتج
-            } finally {
-                setIsSubmitting(false);
+            });
+
+            if (response.data.status === "delivered") {
+                toast.success("Your review has been added successfully!");
+                setComment('');
+                setRating(0);
+            } else {
+                toast.error("You cannot add a review because you have not purchased the product.");
             }
-        } else {
-            toast(
-                "You cannot add a review because you have not purchased the product.\n\nYou can only add a review if you have purchased this product.",
-
-                {
-                    duration: 6000,
-                }
-            );
+        } catch (error) {
+            console.error("Error:", error.response?.data || error.message);
+            toast.error("An error occurred while submitting your review.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -104,10 +79,10 @@ export default function Reviews() {
             {product.reviews && product.reviews.length > 0 ? (
                 product.reviews.map((review, index) => (
                     <div key={index} className='p-3 border rounded w-75 w-md-100'>
-                        <p><strong>{review.createdBy.userName}:</strong> {review.comment}</p>
+                        <p className='overflow-auto'><strong>{review.createdBy.userName}:</strong> {review.comment}</p>
                         <p>
                             <strong>Rating:</strong> {review.rating}
-                            <FaStar color="orange" /> {/* أيقونة النجمة بلون أصفر */}
+                            <FaStar color="orange" />
                         </p>
                     </div>
                 ))
@@ -115,41 +90,36 @@ export default function Reviews() {
                 <p>No reviews available.</p>
             )}
 
-            {/* إضافة التعليق فقط إذا كان المستخدم قد اشترى المنتج */}
-            {hasPurchased ? (
-                <div className="w-75 w-md-100 mt-4">
-                    <textarea
-                        value={comment}
-                        onChange={handleCommentChange}
-                        placeholder="Add your own review here"
-                        className="form-control"
-                        rows="3"
-                    />
-                    <div className="d-flex justify-content-between mt-2">
-                        <div>
-                            <span>Rating: </span>
-                            {[1, 2, 3, 4, 5].map((rating) => (
-                                <FaStar
-                                    key={rating}
-                                    color={rating <= rating ? 'orange' : 'gray'}
-                                    onClick={() => handleRatingChange(rating)}
-                                    style={{ cursor: 'pointer' }}
-                                />
-                            ))}
-                        </div>
-                        <Button
-                            className={`${style.customButton} `} // يمكن تعديل هذه الفئة في CSS
-                            onClick={handleSubmit}
+            <div className="w-75 w-md-100 mt-4">
+                <textarea
+                    value={comment}
+                    onChange={handleCommentChange}
+                    placeholder="Add your own review here"
+                    className="form-control"
+                    rows="3"
+                />
+                <div className="d-flex flex-column flex-md-row gap-3 justify-content-between mt-2">
+                    <div>
+                        <span>Rating: </span>
+                        {[1, 2, 3, 4, 5].map((ratingValue) => (
+                            <FaStar
+                                key={ratingValue}
+                                color={ratingValue <= rating ? 'orange' : 'gray'}
+                                onClick={() => handleRatingChange(ratingValue)}
+                                style={{ cursor: 'pointer' }}
+                            />
+                        ))}
+                    </div>
+                    <div>
+                        <CustomButton
+                            type="login"
+                            text={isSubmitting ? 'Submitting...' : 'Submit Review'}
+                            onClick={review}
                             disabled={isSubmitting}
-                        >
-                            {isSubmitting ? 'Submitting...' : hasPurchased ? 'Submit Review' : 'You must purchase the product to review'}
-                        </Button>
-
+                        />
                     </div>
                 </div>
-            ) : (
-                <p>You can only add a review if you have purchased this product.</p>
-            )}
+            </div>
         </div>
     );
 }

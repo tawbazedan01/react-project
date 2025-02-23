@@ -16,6 +16,13 @@
    /* ظل أقوى عند التحويم */
 }
 
+.imgProduct {
+   width: 350px;
+   height: 450px;
+   border-radius: 10px;
+}
+
+
 .icons .icon a {
    font-size: 25px;
    color: black;
@@ -47,4 +54,21 @@
 .navSection a:hover {
    background-color: #B88E2F;
    color: var(--mainColor);
+}
+
+
+
+@media screen and (max-width:700px) {
+   .imgProduct {
+      width: 250px;
+      height: 350px;
+   }
+}
+
+
+@media screen and (max-width:400px) {
+   .imgProduct {
+      width: 150px;
+      height: 250px;
+   }
 }

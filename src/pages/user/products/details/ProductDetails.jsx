@@ -53,8 +53,8 @@ export default function ProductDetails() {
         <>
             <Header />
             <section className="product container py-5">
-                <div className="row justify-content-center">
-                    <div className="col-md-6">
+                <div className="row justify-content-center gap-3 gap-md-3 gap-lg-0">
+                    <div className="col-lg-6 col-md-12">
                         <Card className="p-4 border">
                             <div className="d-flex gap-4">
                                 <div className='d-flex flex-column gap-2 justify-content-center align-items-center'>
@@ -63,15 +63,15 @@ export default function ProductDetails() {
                                     ))}
                                 </div>
                                 <Card.Img
+                                    className={style.imgProduct}
                                     variant="top"
                                     src={product.mainImage.secure_url}
                                     alt={product.name}
-                                    style={{ width: '350px', height: '450px', borderRadius: '10px' }}
                                 />
                             </div>
                         </Card>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-lg-6 col-md-12">
                         <Card className="p-4  border">
                             <Card.Body>
                                 <Card.Title className={`${style.card1}mt-3`}>{product.name}</Card.Title>
@@ -82,28 +82,24 @@ export default function ProductDetails() {
                             <div className={`${style.card2}mt-3 p-3`}>
                                 <Card.Text><span>Slug:</span> {product.slug}</Card.Text>
                                 <Card.Text><span>Category:</span> {product.category}</Card.Text>
-                                <div className='d-flex justify-content-start align-items-center  gap-2'>
-
+                                <div className='d-flex justify-content-start align-items-center gap-2'>
                                     <span>Share:</span>
-                                    <div className={`${style.icons} d-flex  gap-3`}>
-
-                                        <div className={`${style.icon} `} >
+                                    <div className={`${style.icons} d-flex gap-3`}>
+                                        <div className={`${style.icon}`}>
                                             <Link>
                                                 <FaFacebookSquare />
                                             </Link>
                                         </div>
-                                        <div className={`${style.icon}`} >
+                                        <div className={`${style.icon}`}>
                                             <Link>
                                                 <FaLinkedin />
-
                                             </Link>
                                         </div>
-                                        <div className={`${style.icon}`} >
+                                        <div className={`${style.icon}`}>
                                             <Link>
                                                 <FaTwitter />
                                             </Link>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -111,6 +107,7 @@ export default function ProductDetails() {
                     </div>
                 </div>
             </section>
+
 
             <div className={`m-5 ${style.bgSection}`} >
                 <section className={`${style.navSection} p-3`}>

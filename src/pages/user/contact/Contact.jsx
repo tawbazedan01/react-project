@@ -7,6 +7,8 @@ import Form from 'react-bootstrap/Form';
 import { MdAccessTimeFilled } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdLocationPin } from "react-icons/md";
+import { motion } from 'framer-motion';
+
 
 
 export default function Contact() {
@@ -24,7 +26,12 @@ export default function Contact() {
               Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
           </div>
           <Row className='pt-0 pb-5 ps-5 pe-5'>
-            <Col md={5} className='d-flex flex-column justify-content-center align-items-center'>
+            <motion.div
+              className="col-md-5 col-12 d-flex flex-column justify-content-center align-items-center"
+              initial={{ x: -200 }}  // البداية من اليسار
+              animate={{ x: 0 }}     // النهاية في المكان الأصلي
+              transition={{ duration: 1.5 }}
+            >
               <div className={`${style.contact1} d-flex flex-column gap-3 p-5`}>
                 <div className='d-flex gap-3 ps-2'>
                   <div className={style.icon}>
@@ -33,41 +40,45 @@ export default function Contact() {
                   <div className={style.contact2}>
                     <h3>Address</h3>
                     <div>
-                      <span className={style.text} >236 5th SE Avenue, New York NY10000, United States</span>
+                      <span className={style.text}>236 5th SE Avenue, New York NY10000, United States</span>
                     </div>
-
                   </div>
                 </div>
-                <div className='d-flex gap-3 '>
+                <div className='d-flex gap-3'>
                   <div className={style.icon}>
                     <FaPhoneAlt />
                   </div>
                   <div className={style.contact2}>
                     <h3>Phone</h3>
                     <div className='d-flex flex-column gap-1'>
-                      <span className={style.text} >Mobile: +(84) 546-6789</span>
-                      <span className={style.text} >Hotline: +(84) 456-6789</span>
+                      <span className={style.text}>Mobile: +(84) 546-6789</span>
+                      <span className={style.text}>Hotline: +(84) 456-6789</span>
                     </div>
-
                   </div>
                 </div>
-                <div className='d-flex gap-3 '>
+                <div className='d-flex gap-3'>
                   <div className={style.icon}>
                     <MdAccessTimeFilled />
-
                   </div>
                   <div className={style.contact2}>
                     <h3>Working Time</h3>
                     <div className='d-flex flex-column gap-1'>
-                      <span className={style.text} >Monday-Friday: 9:00 - 22:00</span>
-                      <span className={style.text} >  Saturday-Sunday: 9:00 - 21:00</span>
+                      <span className={style.text}>Monday-Friday: 9:00 - 22:00</span>
+                      <span className={style.text}>Saturday-Sunday: 9:00 - 21:00</span>
                     </div>
                   </div>
                 </div>
               </div>
-            </Col>
-            <Col md={7}>
-              <div className='p-5 '>
+
+            </motion.div>
+
+            <motion.div
+              className="col-md-7 col-12"
+              initial={{ x: 200 }}  // البداية من اليمين
+              animate={{ x: 0 }}    // النهاية في المكان الأصلي
+              transition={{ duration: 1.5 }}
+            >
+              <div className='p-5'>
                 <Form>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Your Name</Form.Label>
@@ -88,9 +99,10 @@ export default function Contact() {
                 </Form>
                 <button className={style.submitf} type='submit'> Submit </button>
               </div>
+            </motion.div>
 
-            </Col>
           </Row>
+
         </Container>
 
 

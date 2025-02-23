@@ -56,21 +56,17 @@ export default function Checkout() {
                 }
             );
 
+            toast.success("Your order has been placed successfully!");
             navigate('/profile/orders');
         } catch (error) {
-            toast.promise(
-                saveSettings(settings),
-                {
-                    error: <b>Your order is currently pending. Please check your orders page later.</b>,
-                }
-            );
-
-            toast.error('Something went wrong, please try again later!');
+            toast.error("Something went wrong, please try again later!");
             console.error('Error placing order:', error);
         } finally {
             setIsLoading(false);
         }
     };
+
+
 
     return (
         <div>
