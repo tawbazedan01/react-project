@@ -30,11 +30,12 @@ export default function ProductsSort({ onSearchChange, onFilterChange, onSortCha
         <div className={`${style.header} p-3`}>
             <Container>
                 <Row>
-                    <Col md={12} className='d-flex justify-content-between align-items-center'>
-                        <div className='d-flex align-items-center gap-3 flex-wrap'>
+
+                    <Col md={12} className='d-flex flex-column flex-md-row justify-content-between gap-2'>
+                        <div className='d-flex flex-column flex-md-row align-items-center gap-3'>
                             <div className='d-flex gap-3'>
                                 <div className='d-flex gap-2 align-items-center'>
-                                    <IoFilterCircleOutline />
+                                    <div className={style.icons2}><IoFilterCircleOutline /></div>
                                     <Form.Control
                                         as="select"
                                         value={selectedCategory}
@@ -49,7 +50,7 @@ export default function ProductsSort({ onSearchChange, onFilterChange, onSortCha
                                     </Form.Control>
                                 </div>
                                 <div className='d-flex gap-2 align-items-center'>
-                                    <ImSearch />
+                                    <div className={style.icons2}><ImSearch /></div>
                                     <Form.Control
                                         type="text"
                                         placeholder="Search"
@@ -57,8 +58,8 @@ export default function ProductsSort({ onSearchChange, onFilterChange, onSortCha
                                         onChange={handleSearchChange}
                                     />
                                 </div>
+                                <div className={style.separator}></div>
                             </div>
-                            <div className={style.separator}></div>
                             <p className='m-0'>Sort, search, and filter products easily!</p>
                         </div>
 
@@ -73,6 +74,8 @@ export default function ProductsSort({ onSearchChange, onFilterChange, onSortCha
                             </select>
                         </div>
                     </Col>
+
+
                 </Row>
             </Container>
         </div>

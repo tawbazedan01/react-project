@@ -39,24 +39,31 @@ export default function Orders() {
     getOrders();
   }, []);
 
-  const cancelOrder = async (productId) => {
-    setDeletingId(productId);
+  const cancelOrder = async (order) => {
+    if (order.status !== "pending") {
+      toast.error("Only pending orders can be cancelled.");
+      return;
+    }
+    setDeletingId(order._id);
     try {
-      const response = await axios.patch(`${import.meta.env.VITE_BURL}/order/cancel/${productId}`,
+      const response = await axios.patch(
+        `${import.meta.env.VITE_BURL}/order/cancel/${order._id}`,
         {},
         {
           headers: { Authorization: `Tariq__${token}` },
-        });
+        }
+      );
 
-      if (response.data.order.status === "pending") {
+      if (response.data.order.status === "cancelled") {
+        setOrders((prevOrders) => prevOrders.filter(o => o._id !== order._id));
         toast.success("Order cancelled successfully!");
-        setOrders((prevOrders) => prevOrders.filter(order => order.productId !== productId));
+
       } else {
-        toast.error("Cannot cancel this order. It has already been processed.");
+        toast.error("Failed to cancel the order.");
       }
 
     } catch (error) {
-      toast.error("Failed to cancel order. Please try again.");
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setDeletingId(null);
     }
@@ -103,7 +110,7 @@ export default function Orders() {
                                     <Loading size="20px" />
                                   ) : (
                                     <FontAwesomeIcon
-                                      onClick={() => cancelOrder(product._id)}
+                                      onClick={() => cancelOrder(order)}
                                       icon={faTrash}
                                       className={style.trash}
                                     />
