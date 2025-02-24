@@ -2,19 +2,17 @@ import React, { useState, useEffect } from 'react';
 import useFetch from '../../assets/hooks/useFetch.jsx';
 import Loading from '../loading/Loading.jsx';
 import { useParams } from 'react-router-dom';
-import { FaStar } from 'react-icons/fa'; // استيراد أيقونة النجمة
-import { toast } from 'react-toastify'; // استيراد التوست
+import { FaStar } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
 import CustomButton from '../../assets/hooks/customButton/CustomButton.jsx';
-import style from './review.module.css';
 
 export default function Reviews() {
     const { productId } = useParams();
     const { data, isLoading, error } = useFetch(`${import.meta.env.VITE_BURL}/products/${productId}`);
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState(0);
-    const [isSubmitting, setIsSubmitting] = useState(false); // حالة إرسال التعليق
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     if (isLoading) {
         return <Loading />;

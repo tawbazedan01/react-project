@@ -18,7 +18,7 @@ export default function Contact() {
         <img src={logo2} alt="logo" />
         <h2 className={style.overlayText1}>Contact Us</h2>
       </div>
-      <div className='p-5'>
+      <div className='p-lg-5 p-md-0'>
         <Container>
           <div className='p-5 d-flex flex-column justify-content-center align-items-center gap-1'>
             <h2>Get In Touch With Us</h2>
@@ -78,7 +78,7 @@ export default function Contact() {
               animate={{ x: 0 }}    // النهاية في المكان الأصلي
               transition={{ duration: 1.5 }}
             >
-              <div className='p-5'>
+              <div className='p-lg-5 p-md-0 '>
                 <Form>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Your Name</Form.Label>

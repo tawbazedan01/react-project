@@ -3,75 +3,50 @@
     font-size: 16px;
     font-weight: bold;
     color: var(--bgColor);
-    /* النص بلون الخلفية */
     border: 2px solid var(--mainColor);
-    /* الحدود بلون الـ mainColor */
     border-radius: 8px;
-    /* حواف دائرية */
     background-color: var(--mainColor);
-    /* الخلفية بلون الـ mainColor */
     transition: background-color 0.3s, border 0.3s, color 0.3s;
-    /* تأثير الانتقال */
 }
 
 .customBtn.login {
     background-color: #F9F1E7;
-    /* اللون الجديد Login */
     border-color: #F9F1E7;
-    /* حدود باللون الجديد */
     color: var(--mainColor);
-    /* النص بلون الـ mainColor */
 }
 
 .customBtn.register {
     background-color: #B88E2F;
-    /* اللون الجديد Register */
     border-color: #B88E2F;
-    /* حدود باللون الجديد */
     color: var(--bgColor);
-    /* النص بلون الخلفية */
 }
 
 .customBtn.delete {
     background-color: var(--bgColor);
-    /* خلفية بلون الـ bgColor */
     border-color: var(--secColor);
-    /* حدود بلون الـ secColor */
     color: var(--mainColor);
-    /* النص بلون الـ mainColor */
 }
 
 .customBtn.reset {
     background-color: #D72638;
-    /* لون مميز للزر */
     border-color: #D72638;
-    /* نفس لون الحدود */
     color: var(--bgColor);
-    /* النص بلون الخلفية */
 }
 
-
-/* تغيير اللون عند الهوفر */
 .customBtn:hover {
     background-color: var(--secColor);
     color: var(--mainColor);
     border-color: var(--secColor);
 }
 
-/* تأثيرات hover للأزرار الأخرى */
 .customBtn.delete:hover {
     background-color: var(--secColor);
-    /* تغيير الخلفية عند المرور */
     border-color: var(--secColor);
-    /* تغيير الحدود عند المرور */
     color: var(--mainColor);
-    /* تغيير النص عند المرور */
 }
 
-/* تأثير الـ hover */
 .customBtn.reset:hover {
     background-color: #B71C30;
-    /* لون أغمق عند المرور */
     border-color: #B71C30;
     color: var(--bgColor);
 }

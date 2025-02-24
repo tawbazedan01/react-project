@@ -8,22 +8,22 @@ import style from './ProductsSort.module.css';
 
 export default function ProductsSort({ onSearchChange, onFilterChange, onSortChange, categories }) {
     const [searchTerm, setSearchTerm] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState(""); // فلتر الفئة
-    const [sortOrder, setSortOrder] = useState("1"); // Default: "Default" sort
+    const [selectedCategory, setSelectedCategory] = useState("");
+    const [sortOrder, setSortOrder] = useState("1");
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
-        onSearchChange(e.target.value); // إرسال البحث للمكون الأب
+        onSearchChange(e.target.value);
     };
 
     const handleFilterChange = (e) => {
         setSelectedCategory(e.target.value);
-        onFilterChange(e.target.value); // إرسال الفلتر للمكون الأب
+        onFilterChange(e.target.value);
     };
 
     const handleSortChange = (e) => {
         setSortOrder(e.target.value);
-        onSortChange(e.target.value); // إرسال السورت للمكون الأب
+        onSortChange(e.target.value);
     };
 
     return (
@@ -63,7 +63,6 @@ export default function ProductsSort({ onSearchChange, onFilterChange, onSortCha
                             <p className='m-0'>Sort, search, and filter products easily!</p>
                         </div>
 
-                        {/* قسم السورت */}
                         <div className='d-flex gap-2 align-items-center'>
                             <span>Sort by</span>
                             <select value={sortOrder} onChange={handleSortChange}>
@@ -74,7 +73,6 @@ export default function ProductsSort({ onSearchChange, onFilterChange, onSortCha
                             </select>
                         </div>
                     </Col>
-
 
                 </Row>
             </Container>

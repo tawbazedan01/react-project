@@ -4,6 +4,7 @@ import Loading from '../../../components/loading/Loading.jsx';
 import style from './categories.module.css';
 import { Link } from 'react-router-dom';
 import logo2 from '../../../assets/images/logo-img/House_Logos.png';
+import SectionFooter from '../../../components/user/footerSection/SectionFooter.jsx';
 
 
 
@@ -34,12 +35,12 @@ export default function Categories() {
                 </div>
               </Link>
             </div>
-
           ))}
-
-
         </div>
       </div>
+
+      <SectionFooter />
+
     </>
   )
 }

@@ -56,7 +56,13 @@ export default function CustomNavbar() {
           </Nav>
           <Dropdown >
             <Dropdown.Toggle id="dropdown-button-dark-example1" className={style.dropdown}>
-              welcome {loading ? "..." : user ? user.userName : ""}
+              welcome
+              <img
+                src={user?.image?.secure_url || ""}
+                className="rounded-circle me-2 ms-2"
+                width="25"
+                height="25"
+              /> {loading ? "..." : user ? user.userName : ""}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>

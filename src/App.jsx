@@ -31,9 +31,13 @@ const router = createBrowserRouter([
   {
     path: '/auth',
     element: (
+
+
       <AuthProtectedRoute>
         <AuthLayout />
       </AuthProtectedRoute>
+
+
     ),
     children: [
       { path: 'register', element: <Register /> },

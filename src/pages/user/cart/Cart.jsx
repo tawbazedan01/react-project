@@ -11,7 +11,6 @@ import Table from 'react-bootstrap/Table';
 import { CartContext } from '../../../components/user/context/CartContext.jsx';
 import CustomButton from '../../../assets/hooks/customButton/CustomButton.jsx';
 
-
 export default function Cart() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +44,6 @@ export default function Cart() {
 
   if (error) {
     return <div>Error: Something went wrong, please try again later.</div>;
-
   }
 
   const incQty = async (productId) => {
@@ -60,9 +58,15 @@ export default function Cart() {
         }
       }
     );
-    setCartCount(cartCount + 1);
-    getCart();
-    console.log(response);
+
+    setData(prevCart => {
+      return prevCart.map(item => {
+        if (item.productId == productId) {
+          return { ...item, quantity: item.quantity + 1 }
+        }
+        return item;
+      })
+    })
   }
 
   const decQty = async (productId) => {
@@ -77,26 +81,36 @@ export default function Cart() {
         }
       }
     );
-    getCart();
-    setCartCount(cartCount - 1);
-    console.log(response);
+
+    setData(prevCart => {
+      return prevCart.map(item => {
+        if (item.productId == productId) {
+          return { ...item, quantity: item.quantity - 1 }
+        }
+        return item;
+      })
+    })
   }
 
   const removeItem = async (productId) => {
     const token = localStorage.getItem('userToken');
-    const response = await axios.patch(`${import.meta.env.VITE_BURL}/cart/removeItem`,
-      {
-        productId: productId
-      },
-      {
-        headers: {
-          Authorization: `Tariq__${token}`,
+    try {
+      const response = await axios.patch(`${import.meta.env.VITE_BURL}/cart/removeItem`,
+        {
+          productId: productId
+        },
+        {
+          headers: {
+            Authorization: `Tariq__${token}`,
+          }
         }
-      }
-    );
-    getCart();
-    console.log(response);
+      );
 
+      setData(prevCart => prevCart.filter(item => item.productId !== productId));
+
+    } catch (error) {
+      console.error('Error removing item:', error);
+    }
   }
 
   const clearCart = async () => {
@@ -113,18 +127,12 @@ export default function Cart() {
         }
       );
 
-      console.log('Response:', response);
-
+      setData([]);
       setCartCount(0);
-      getCart();
     } catch (error) {
       console.error('Error clearing cart:', error);
     }
   };
-
-
-
-
 
   return (
     <>
