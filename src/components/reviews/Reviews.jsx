@@ -57,7 +57,7 @@ export default function Reviews() {
                 }
             });
 
-            if (response.data.status === "delivered") {
+            if (response.data.status === "deliverd") {
                 toast.success("Your review has been added successfully!");
                 setComment('');
                 setRating(0);
