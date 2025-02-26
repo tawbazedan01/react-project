@@ -32,10 +32,12 @@ const router = createBrowserRouter([
     path: '/auth',
     element: (
 
+      <CartContextProvider>
+        <AuthProtectedRoute>
+          <AuthLayout />
+        </AuthProtectedRoute>
+      </CartContextProvider>
 
-      <AuthProtectedRoute>
-        <AuthLayout />
-      </AuthProtectedRoute>
 
 
     ),
