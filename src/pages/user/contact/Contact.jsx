@@ -28,8 +28,8 @@ export default function Contact() {
           <Row className='pt-0 pb-5 ps-5 pe-5'>
             <motion.div
               className="col-md-5 col-12 d-flex flex-column justify-content-center align-items-center"
-              initial={{ x: -200 }}  // البداية من اليسار
-              animate={{ x: 0 }}     // النهاية في المكان الأصلي
+              initial={{ x: -200 }}  
+              animate={{ x: 0 }}    
               transition={{ duration: 1.5 }}
             >
               <div className={`${style.contact1} d-flex flex-column gap-3 p-5`}>
@@ -74,8 +74,8 @@ export default function Contact() {
 
             <motion.div
               className="col-md-7 col-12"
-              initial={{ x: 200 }}  // البداية من اليمين
-              animate={{ x: 0 }}    // النهاية في المكان الأصلي
+              initial={{ x: 200 }}  
+              animate={{ x: 0 }}    
               transition={{ duration: 1.5 }}
             >
               <div className='p-lg-5 p-md-0 '>
