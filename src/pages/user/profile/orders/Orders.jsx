@@ -89,7 +89,7 @@ export default function Orders() {
                     <Table striped bordered hover responsive>
                       <thead className={style.heading}>
                         <tr>
-                          <th>Product ID</th>
+                          <th>Product Name</th>
                           <th>Price</th>
                           <th>Quantity</th>
                           <th>Subtotal</th>

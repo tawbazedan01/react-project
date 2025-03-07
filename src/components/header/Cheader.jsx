@@ -2,6 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Container } from 'react-bootstrap';
+import useFetch from '../../assets/hooks/useFetch';
 import style from './header.module.css';
 
 export default function Cheader() {
@@ -19,6 +20,7 @@ export default function Cheader() {
                         <div className={style.separator}></div>
                     </div>
                     <span>Category</span>
+
                 </div>
             </Container>
         </div>

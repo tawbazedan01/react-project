@@ -39,10 +39,13 @@ export default function CustomNavbar() {
           </Nav>
 
           <Nav className="d-flex flex-row gap-1">
-            <NavDropdown title={<FontAwesomeIcon icon={faUser} />} >
-              <NavDropdown.Item as={Link} to={'/auth/login'}>Login</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={'/auth/register'}>Register</NavDropdown.Item>
-            </NavDropdown>
+            {!user && (
+              <NavDropdown title={<FontAwesomeIcon icon={faUser} />} >
+                <NavDropdown.Item as={Link} to={'/auth/login'}>Login</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={'/auth/register'}>Register</NavDropdown.Item>
+              </NavDropdown>
+            )}
+
             <Nav.Link as={Link} to={'#'}>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </Nav.Link>

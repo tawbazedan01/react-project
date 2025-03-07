@@ -18,9 +18,14 @@ export default function AboutComponent() {
             </Row>
 
             <Row className="g-4">
-                <Col md={4}>
-                    <Card className="shadow-sm p-4 text-center">
-                        <Card.Img variant="top" src={image1} alt="Handmade Pieces" />
+                <Col md={4} className="d-flex">
+                    <Card className="shadow-sm p-4 text-center flex-grow-1" style={{ minHeight: "100%" }}>
+                        <Card.Img
+                            variant="top"
+                            src={image1}
+                            alt="Handmade Pieces"
+                            style={{ height: "200px", objectFit: "cover" }}
+                        />
                         <Card.Body>
                             <Card.Title className="h5">Handmade Pieces That Took Time to Make</Card.Title>
                             <Card.Text>
@@ -30,9 +35,14 @@ export default function AboutComponent() {
                     </Card>
                 </Col>
 
-                <Col md={4}>
-                    <Card className="shadow-sm p-4 text-center">
-                        <Card.Img variant="top" src={image2} alt="Exploring Decoration" />
+                <Col md={4} className="d-flex">
+                    <Card className="shadow-sm p-4 text-center flex-grow-1" style={{ minHeight: "100%" }}>
+                        <Card.Img
+                            variant="top"
+                            src={image2}
+                            alt="Exploring Decoration"
+                            style={{ height: "200px", objectFit: "cover" }}
+                        />
                         <Card.Body>
                             <Card.Title className="h5">Exploring New Ways of Decorating</Card.Title>
                             <Card.Text>
@@ -42,9 +52,14 @@ export default function AboutComponent() {
                     </Card>
                 </Col>
 
-                <Col md={4}>
-                    <Card className="shadow-sm p-4 text-center">
-                        <Card.Img variant="top" src={image3} alt="Millennial Design" />
+                <Col md={4} className="d-flex">
+                    <Card className="shadow-sm p-4 text-center flex-grow-1" style={{ minHeight: "100%" }}>
+                        <Card.Img
+                            variant="top"
+                            src={image3}
+                            alt="Millennial Design"
+                            style={{ height: "200px", objectFit: "cover" }}
+                        />
                         <Card.Body>
                             <Card.Title className="h5">Going All-In with Millennial Design</Card.Title>
                             <Card.Text>

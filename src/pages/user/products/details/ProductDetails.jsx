@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';  // إضافة useState
 import useFetch from '../../../../assets/hooks/useFetch.jsx';
 import Loading from '../../../../components/loading/Loading.jsx';
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
@@ -15,12 +15,14 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 
-
 export default function ProductDetails() {
     const { productId } = useParams();
     const navigate = useNavigate();
     const { cartCount, setCartCount } = useContext(CartContext);
     const { data, isLoading, error } = useFetch(`${import.meta.env.VITE_BURL}/products/${productId}`);
+
+    // حالة لتخزين الصورة التي يتم عرضها
+    const [mainImage, setMainImage] = useState('');
 
     if (isLoading) return <Loading />;
     if (error) return <div className="text-danger">Error: {error}</div>;
@@ -49,6 +51,9 @@ export default function ProductDetails() {
         }
     };
 
+    // إذا لم تكن الصورة الرئيسية محملة، استخدم الصورة الرئيسية من البيانات
+    const mainImageUrl = mainImage || product.mainImage.secure_url;
+
     return (
         <>
             <Header />
@@ -59,13 +64,19 @@ export default function ProductDetails() {
                             <div className="d-flex gap-4">
                                 <div className='d-flex flex-column gap-2 justify-content-center align-items-center'>
                                     {product.subImages.map((image, index) => (
-                                        <img key={index} src={image.secure_url} alt={`subimage-${index}`} width='60px' />
+                                        <img
+                                            key={index}
+                                            src={image.secure_url}
+                                            alt={`subimage-${index}`}
+                                            width='60px'
+                                            onClick={() => setMainImage(image.secure_url)} // تغيير الصورة عند النقر
+                                        />
                                     ))}
                                 </div>
                                 <Card.Img
                                     className={style.imgProduct}
                                     variant="top"
-                                    src={product.mainImage.secure_url}
+                                    src={mainImageUrl} // عرض الصورة الجديدة
                                     alt={product.name}
                                 />
                             </div>
@@ -108,7 +119,6 @@ export default function ProductDetails() {
                 </div>
             </section>
 
-
             <div className={`m-5 ${style.bgSection}`} >
                 <section className={`${style.navSection} p-3`}>
                     <Container>
@@ -128,8 +138,6 @@ export default function ProductDetails() {
                     </Container>
                 </section>
             </div>
-
-
         </>
     );
 }
