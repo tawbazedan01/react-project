@@ -41,7 +41,7 @@ export default function ProductsSort2({ onSearchChange, onSortChange }) {
                                 </div>
                                 <div className={style.separator}></div>
                             </div>
-                            <p className='m-0'>Sort, search, and filter products easily!</p>
+                            <p className='m-0'>Sort, search products easily!</p>
                         </div>
 
                         <div className='d-flex gap-2 align-items-center'>

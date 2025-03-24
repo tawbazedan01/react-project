@@ -4,6 +4,8 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Container } from 'react-bootstrap';
 import useFetch from '../../assets/hooks/useFetch';
 import style from './header.module.css';
+import { Link } from 'react-router-dom';
+
 
 export default function Cheader() {
     return (
@@ -11,11 +13,11 @@ export default function Cheader() {
             <Container>
                 <div className={`${style.title} pt-1 pb-1 d-flex gap-3  align-items-center `}>
                     <div className={`${style.title1} d-flex gap-3 align-items-center`}>
-                        <span className=''>home</span>
+                        <Link to={'/home'}> <span className=''>home</span> </Link>
                         <FontAwesomeIcon icon={faChevronRight} />
                     </div>
                     <div className={`${style.title1} d-flex gap-3 align-items-center`}>
-                        <span className=''>Categories</span>
+                        <Link to={'/categories'}> <span className=''>Categories</span> </Link>
                         <FontAwesomeIcon icon={faChevronRight} />
                         <div className={style.separator}></div>
                     </div>

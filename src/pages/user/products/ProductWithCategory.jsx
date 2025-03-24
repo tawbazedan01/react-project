@@ -67,7 +67,9 @@ export default function ProductWithCategory() {
             <ProductsSort2 onSearchChange={handleSearchChange} onSortChange={handleSortChange} />
             <div className="products container py-5">
                 <div className="row">
-                    {sortedAndFilteredProducts().map(product =>
+                    {products.length === 0 ? (
+                        <p className="alert alert-danger">No products found.</p>
+                    ) : sortedAndFilteredProducts().map(product =>
                         <Product key={product._id} product={product} />
                     )}
                 </div>

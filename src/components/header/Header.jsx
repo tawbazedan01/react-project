@@ -1,8 +1,9 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Container } from 'react-bootstrap';
 import style from './header.module.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -14,11 +15,11 @@ export default function Header() {
             <Container>
                 <div className={`${style.title} pt-1 pb-1 d-flex gap-3  align-items-center `}>
                     <div className={`${style.title1} d-flex gap-3 align-items-center`}>
-                        <span className=''>home</span>
+                        <Link to={'/home'}> <span className=''>home</span> </Link>
                         <FontAwesomeIcon icon={faChevronRight} />
                     </div>
                     <div className={`${style.title1} d-flex gap-3 align-items-center`}>
-                        <span className=''>products</span>
+                        <Link to={'/products'}>   <span className=''>products</span> </Link>
                         <FontAwesomeIcon icon={faChevronRight} />
                         <div className={style.separator}></div>
                     </div>
