@@ -57,23 +57,26 @@ export default function CustomNavbar() {
               {cartCount}
             </Nav.Link>
           </Nav>
-          <Dropdown >
-            <Dropdown.Toggle id="dropdown-button-dark-example1" className={style.dropdown}>
-              welcome
-              <img
-                src={user?.image?.secure_url || ""}
-                className="rounded-circle me-2 ms-2"
-                width="25"
-                height="25"
-              /> {loading ? "..." : user ? user.userName : ""}
-            </Dropdown.Toggle>
+          {user && (
+            <Dropdown>
+              <Dropdown.Toggle id="dropdown-button-dark-example1" className={style.dropdown}>
+                welcome
+                <img
+                  src={user?.image?.secure_url || ""}
+                  className="rounded-circle me-2 ms-2"
+                  width="25"
+                  height="25"
+                /> {loading ? "..." : user.userName}
+              </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item as={Link} to={'/profile'}>Profile</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item onClick={logout}>LogOut</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to={'/profile'}>Profile</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={logout}>LogOut</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
+
         </Navbar.Collapse>
       </Container>
     </Navbar>

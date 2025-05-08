@@ -55,6 +55,10 @@ export default function Login() {
 
             </FloatingLabel>
             <div className='d-flex flex-column gap-3 pb-3'>
+              <Link to="/auth/register" style={{ color: '#B88E2F' }}>
+                Don't Have an Account? </Link>
+            </div>
+            <div className='d-flex flex-column gap-3 pb-3'>
               <Link to="/auth/resetPassword" style={{ color: '#B88E2F' }}>
                 forget your password! </Link>
             </div>

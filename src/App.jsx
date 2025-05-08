@@ -53,9 +53,7 @@ const router = createBrowserRouter([
     element: (
       <UserContextProvider>
         <CartContextProvider>
-          <ProtectedRoute>
-            <UserLayout />
-          </ProtectedRoute>
+          <UserLayout />
         </CartContextProvider>
       </UserContextProvider>
     ),
