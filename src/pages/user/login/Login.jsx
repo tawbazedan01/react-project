@@ -60,7 +60,7 @@ export default function Login() {
             </div>
             <div className='d-flex flex-column gap-3 pb-3'>
               <Link to="/auth/resetPassword" style={{ color: '#B88E2F' }}>
-                forget your password! </Link>
+                Forget your password! </Link>
             </div>
             <CustomButton disabled={isLoading} type="login" text={isLoading ? "Loading..." : "LogIn"} />
 
