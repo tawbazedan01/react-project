@@ -10,12 +10,15 @@ import style from './cart.module.css';
 import Table from 'react-bootstrap/Table';
 import { CartContext } from '../../../components/user/context/CartContext.jsx';
 import CustomButton from '../../../assets/hooks/customButton/CustomButton.jsx';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 export default function Cart() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
   const { cartCount, setCartCount, subtotal, total } = useContext(CartContext);
 
   const token = localStorage.getItem("userToken");
@@ -50,7 +53,7 @@ export default function Cart() {
         cancelButtonText: 'Cancel',
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = '/auth/login';
+          navigate('/auth/login');
         }
       });
     }
